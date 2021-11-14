@@ -48,8 +48,8 @@ function handler(request, response) {
     var knownHosts = [
         'localhost:5000',
         'localhost',
-        'cryptoinvest.herokuapp.com',
-        'http://cryptoinvest.herokuapp.com/',
+        'cryptoinvests.herokuapp.com',
+        'http://cryptoinvests.herokuapp.com/',
     ];
 
     if (!_.includes(knownHosts, request.headers.host)) {
