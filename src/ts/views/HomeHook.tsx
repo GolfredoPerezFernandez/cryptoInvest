@@ -119,7 +119,7 @@ const _styles = {
   }),
   logoText3: RX.Styles.createTextStyle({
     font: Fonts.displayRegular,
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.white,
   }),
   logoText6: RX.Styles.createTextStyle({
@@ -167,16 +167,16 @@ export const HomeHook = ({
   console.log(width)
   return <RX.ScrollView style={{ flex: 1, backgroundColor: '#353A40', alignSelf: 'stretch' }} >
 
-    <RX.View style={{ flex: 1, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch' }}>
-      <RX.Image source={ImageSource.caru2} resizeMode={width < 1300 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 40 : 0, flexDirection: 'column', width: width < 1300 ? 1200 : width * 0.8, height: width < 1300 ? height * 0.8 : (height - 80), flex: 1, alignSelf: 'stretch' }} >
+    <RX.View style={{ flex: 1, flexDirection: 'row', width, height: (height - 160), alignSelf: 'stretch' }}>
+      <RX.Image source={ImageSource.caru2} resizeMode={width < 1300 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 40 : 0, flexDirection: 'column', width: width < 1300 ? 1200 : width * 0.8, height: width < 1300 ? height * 0.8 : (height - 160), flex: 1, alignSelf: 'stretch' }} >
         <RX.View style={{ width: width, height: height * 0.08, marginTop: 70, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-          <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 50, marginBottom: 10, width: 250, height: 50, }} />
+          <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 10, width: 250, height: 50, }} />
 
         </RX.View >
         <RX.View style={{ flex: 1, marginBottom: 20, width: width, height: height * 0.9, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: 300, borderRadius: 24, marginTop: 40, height: height * 0.6, alignSelf: 'stretch' }} >
-            <RX.Image source={ImageSource.tier1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 200, height: 200, }} />
+            <RX.Image source={ImageSource.tier1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: width * 0.08, marginTop: 20, marginBottom: 10, }]}>
               {'Bronze'}
             </RX.Text>
@@ -194,7 +194,7 @@ export const HomeHook = ({
             </RX.Image >
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: 300, borderRadius: 24, marginTop: 40, height: height * 0.6, alignSelf: 'stretch' }} >
-            <RX.Image source={ImageSource.tier3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 200, height: 200, }} />
+            <RX.Image source={ImageSource.tier3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: width * 0.08, marginTop: 20, marginBottom: 10, }]}>
               {'Gold'}
             </RX.Text>
@@ -212,7 +212,7 @@ export const HomeHook = ({
             </RX.Image >
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: 300, borderRadius: 24, marginTop: 40, height: height * 0.6, alignSelf: 'stretch' }} >
-            <RX.Image source={ImageSource.tier2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 200, height: 200, }} />
+            <RX.Image source={ImageSource.tier2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: width * 0.08, marginTop: 20, marginBottom: 10, }]}>
               {'Silver'}
             </RX.Text>
@@ -232,16 +232,16 @@ export const HomeHook = ({
         </RX.View >
       </RX.Image>
     </RX.View>
-    <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch' }}>
-      <RX.Image source={ImageSource.caru2} resizeMode={width < 1450 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 40 : 0, flexDirection: 'column', width: width < 1300 ? 1200 : width * 0.8, height: width < 1300 ? height * 0.8 : (height - 80), flex: 1, alignSelf: 'stretch' }} >
+    <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 160), alignSelf: 'stretch' }}>
+      <RX.Image source={ImageSource.caru2} resizeMode={width < 1450 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 40 : 0, flexDirection: 'column', width: width < 1300 ? 1200 : width * 0.8, height: width < 1300 ? height * 0.8 : (height - 160), flex: 1, alignSelf: 'stretch' }} >
         <RX.View style={{ width: width, height: height * 0.08, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-          <RX.Image source={ImageSource.road} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 50, marginBottom: 10, width: 350, height: 50, }} />
+          <RX.Image source={ImageSource.road} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 50, marginBottom: 10, width: 350, height: 70, }} />
 
         </RX.View >
         <RX.View style={{ flex: 1, width: width, height: height * 0.45, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
 
-            <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Dao'}
             </RX.Text>
@@ -263,7 +263,7 @@ export const HomeHook = ({
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
 
-            <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'LaunchPad'}
             </RX.Text>
@@ -274,7 +274,7 @@ export const HomeHook = ({
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
 
-            <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Whitelists'}
             </RX.Text>
@@ -284,7 +284,7 @@ export const HomeHook = ({
 
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
-            <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 107, }} />
+            <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 107, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Airdrops'}
             </RX.Text>
@@ -299,7 +299,7 @@ export const HomeHook = ({
         </RX.View >
         <RX.View style={{ flex: 1, width: width, height: height * 0.45, marginBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
-            <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Community'}
             </RX.Text>
@@ -309,7 +309,7 @@ export const HomeHook = ({
 
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
-            <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Software'}
             </RX.Text>
@@ -319,7 +319,7 @@ export const HomeHook = ({
 
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
-            <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Vault1'}
             </RX.Text>
@@ -329,7 +329,7 @@ export const HomeHook = ({
 
           </RX.Image >
           <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'flex-start', alignItems: 'center', width: 250, borderRadius: 24, marginTop: 40, height: height * 0.35, }} >
-            <RX.Image source={ImageSource.item8} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Image source={ImageSource.item8} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
             <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
               {'Vault2'}
             </RX.Text>
@@ -342,8 +342,8 @@ export const HomeHook = ({
       </RX.Image>
     </RX.View>
 
-    <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-      <RX.Image source={ImageSource.caru2} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.8, height: (height - 80), flex: 1, alignSelf: 'stretch' }} >
+    <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 160), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
+      <RX.Image source={ImageSource.caru2} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.8, height: (height - 160), flex: 1, alignSelf: 'stretch' }} >
         <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ flex: 1, marginLeft: 200, width: width * 0.10, height: (height * 0.7), alignSelf: 'center' }} />
 
         <RX.View style={{ flex: 1, marginRight: 100, justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'stretch' }} >
