@@ -27,6 +27,7 @@ export interface TodoCompositeViewProps extends RX.CommonProps {
 interface TodoCompositeViewState {
     height: number;
     width: number;
+    isTiny: boolean;
 }
 
 const _styles = {
@@ -51,6 +52,7 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
         const partialState: Partial<TodoCompositeViewState> = {
             width: ResponsiveWidthStore.getWidth(),
             height: ResponsiveWidthStore.getHeight(),
+            isTiny: ResponsiveWidthStore.isSmallOrTinyScreenSize(),
         };
         return partialState;
     }
@@ -84,10 +86,10 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
             );
         } else if (this.props.navContext.showHomePanel) {
             return (
-                <HomeHook width={this.state.width} height={this.state.height} />
+                <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
             );
         } else {
-            return <HomeHook width={this.state.width} height={this.state.height} />;
+            return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
 

@@ -33,6 +33,7 @@ interface RootViewProps extends RX.CommonProps {
 interface RootViewState {
     viewTitle: string;
     width: number;
+    isTiny: boolean;
     height: number;
     navContext: NavModels.RootNavContext;
 }
@@ -59,10 +60,11 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             viewTitle: this._getViewTitle(newNavContext),
             height: ResponsiveWidthStore.getHeight(),
             width: ResponsiveWidthStore.getWidth(),
+            isTiny: ResponsiveWidthStore.isSmallOrTinyScreenSize(),
             navContext: newNavContext,
         };
 
-        if (false) {
+        if (newNavContext.isStackNav) {
             if (this._navigator) {
                 const newNavStack = newNavContext as NavModels.StackRootNavContext;
                 let mustResetRouteStack = true;
@@ -93,7 +95,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
     }
 
     render(): JSX.Element | null {
-        if (false) {
+        if (this.state.navContext.isStackNav) {
             return (
                 <RX.View style={_styles.root} onLayout={this.props.onLayout}>
                     <Navigator
@@ -116,7 +118,8 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
 
     private _showBackButton(viewId: NavModels.NavViewId): boolean {
         return viewId !== NavModels.NavViewId.TodoComposite &&
-            viewId !== NavModels.NavViewId.TodoList;
+            viewId !== NavModels.NavViewId.TodoList &&
+            viewId !== NavModels.NavViewId.ViewHome
     }
 
     private _getViewTitle(navContext: NavModels.RootNavContext): string {
@@ -183,7 +186,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             case NavModels.NavViewId.NewTodo:
                 return <CreateTodoPanel />;
             case NavModels.NavViewId.ViewHome:
-                return <HomeHook width={this.state.width} height={this.state.height} />;
+                return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
 
             case NavModels.NavViewId.ViewTodo:
                 const viewContext = this._findNavContextForRoute(viewId) as NavModels.ViewTodoViewNavContext;
@@ -193,7 +196,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
                 return <ViewTodoPanel todoId={viewContext.todoId} />;
 
             default:
-                return <HomeHook width={this.state.width} height={this.state.height} />;
+                return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
 

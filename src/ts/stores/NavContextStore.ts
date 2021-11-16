@@ -27,16 +27,16 @@ export class NavContextStore extends StoreBase {
         this._isUsingStackNav = this._shouldUseStackNavigation();
         ResponsiveWidthStore.subscribe(() => {
             const useStackNav = this._shouldUseStackNavigation();
-            if (false) {
+            if (useStackNav !== this._isUsingStackNav) {
                 this._isUsingStackNav = useStackNav;
 
                 // Force navigation to the top level. This will also trigger
                 // a subscription change event.
-                this.navigateToTodoList();
+                this.navigateToTodoList(undefined,false,true);
             }
         });
 
-        if (false) {
+        if (this._isUsingStackNav) {
             const stackNavContext = new NavModels.StackRootNavContext();
             stackNavContext.stack.push(new NavModels.TodoListViewNavContext());
             this._navContext = stackNavContext;
