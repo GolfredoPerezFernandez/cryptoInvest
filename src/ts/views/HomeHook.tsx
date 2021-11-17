@@ -44,6 +44,18 @@ const _styles = {
     justifyContent: 'center',
     alignItems: 'center',
   }),
+  slider: RX.Styles.createViewStyle({
+    overflow: 'hidden' // for custom animations
+  }),
+  sliderContentContainer: RX.Styles.createViewStyle({
+  }),
+  titleStyle55: RX.Styles.createTextStyle({
+    font: Fonts.displayBold,
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'white',
+    alignSelf: 'center'
+  }),
   grid: RX.Styles.createViewStyle({
     maxWidth: 1024,
     flex: 1,
@@ -119,10 +131,20 @@ const _styles = {
   }),
   logoText3: RX.Styles.createTextStyle({
     font: Fonts.displayRegular,
-    fontSize: 14,
+    fontSize: 16,
+    color: Colors.white,
+  }),
+  logoText3Tiny: RX.Styles.createTextStyle({
+    font: Fonts.displayRegular,
+    fontSize: 12,
     color: Colors.white,
   }),
   logoText6: RX.Styles.createTextStyle({
+    font: Fonts.displayBold,
+    fontSize: 36,
+    color: Colors.white,
+  }),
+  logoText8: RX.Styles.createTextStyle({
     font: Fonts.displayBold,
     fontSize: 24,
     color: Colors.white,
@@ -130,8 +152,16 @@ const _styles = {
 };
 import * as UI from '@sproutch/ui';
 
+interface Entries {
+  img: string;
+  imgText: string;
+  title: string;
+  content: string;
+}
+
 import ImageSource from 'modules/images';
 
+const { Carousel } = require('reactxp-carousel')
 import * as RX from 'reactxp';
 import { useState } from 'react';
 
@@ -139,8 +169,10 @@ export const HomeHook = ({
   width,
   isTiny,
   height,
+  entries,
 }: {
   isTiny: boolean,
+  entries: Entries[];
   width: number;
   height: number;
 }) => {
@@ -168,110 +200,169 @@ export const HomeHook = ({
   }
   console.log(width)
   return <RX.ScrollView style={{ flex: 1, backgroundColor: '#353A40', alignSelf: 'stretch' }} >
+    {isTiny ? <RX.View style={{ width: width, height: 50, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 300, height: 50, }} />
 
+    </RX.View > : <RX.View style={{ width: width, height: 100, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 360, height: 100, }} />
+
+    </RX.View >}
     <RX.View style={{ flex: 1, flexDirection: 'row', justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }}>
+      {isTiny ?
+        <Carousel
+          autoplay={true}
+          lockScrollWhileSnapping={true}
+          data={[
+            {
+              img: ImageSource.tier1,
+              imgText: 'Jackpot: After all sold 10x 1eth',
+              title: "Bronze",
+              content: 'Winner: Every 10 sales 0.05eth'
+            },
+            {
+              img: ImageSource.tier3,
+              imgText: 'Jackpot: after all sold 5x5 eth',
+              title: "Gold",
+              content: 'Winner: every 10 sales 0.25eth'
+            },
+            {
+              img: ImageSource.tier2,
+              imgText: 'Jackpot: After all sold 10x 2eth',
+              title: "Silver",
+              content: 'Winner: Every 10 sales 0.10eth'
+            },
+          ]}
+          enableMomentum={false}
+          renderItem={({ item, index }: { item: Entries, index: number }) => {
+            return (
+              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 340, width: width * 0.8, borderRadius: 24, marginTop: 40, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
+                <RX.Image source={item.img} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 180, marginTop: 20, marginBottom: 10, }]}>
+                  {item.title}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: width * 0.7 }]}>
+                  {item.content}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: width * 0.7 }]}>
+                  {item.imgText}
+                </RX.Text>
+                <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginBottom: 20, width: 200, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
+                  <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
+                    {'Buy in Opensea'}
+                  </RX.Text>
 
-      <RX.Image source={ImageSource.caru2} resizeMode={width < 1280 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: 20, flexDirection: 'column', width: isTiny ? width * 0.5 : width * 0.8, height: isTiny ? height * 2.3 : height * 0.9, flex: 1, justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }} >
-        <RX.View style={{ width: width, height: 50, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-          <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 250, height: 50, }} />
+                </RX.Image >
+              </RX.Image >);
+          }}
+          sliderWidth={width}
+          itemWidth={width * 0.8}
+          containerCustomStyle={[_styles.slider,]}
+          contentContainerCustomStyle={[{
+            height: height * 0.9,
+          }]}
+          scrollEnabled={false}
+          loop={true}
+          vertical={false}
+          showsHorizontalScrollIndicator={false}
+        /> :
+        <RX.View style={{ marginTop: 0, flexDirection: 'column', width: isTiny ? width * 0.5 : width * 0.8, height: isTiny ? height * 2.3 : height * 0.7, flex: 1, justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }} >
 
-        </RX.View >
-        <RX.View style={{ flex: 1, paddingBottom: 20, width: width, height: isTiny ? height * 1.2 : height * 0.8, justifyContent: 'center', alignItems: 'center', flexDirection: isTiny ? "column" : 'row', alignSelf: 'stretch' }} >
+          <RX.View style={{ flex: 1, paddingBottom: 20, width: width, height: isTiny ? height * 1.2 : height * 0.8, justifyContent: 'center', alignItems: 'center', flexDirection: isTiny ? "column" : 'row', alignSelf: 'stretch' }} >
 
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: width * 0.2, minWidth: 300, borderRadius: 24, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
-            <RX.Image source={ImageSource.tier1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 100, marginTop: 20, marginBottom: 10, }]}>
-              {'Bronze'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Winner: Every 10 sales 0.05eth'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Jackpot: After all sold 10x 1eth'}
-            </RX.Text>
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', width: 200, marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
-              <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                {'Buy in Opensea'}
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: width * 0.2, minWidth: 300, borderRadius: 24, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
+              <RX.Image source={ImageSource.tier1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 150, marginTop: 20, marginBottom: 10, }]}>
+                {'Bronze'}
               </RX.Text>
-
-            </RX.Image >
-          </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 300, width: width * 0.2, borderRadius: 24, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
-            <RX.Image source={ImageSource.tier3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 100, marginTop: 20, marginBottom: 10, }]}>
-              {'Gold'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Winner: every 10 sales 0.25eth'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Jackpot: after all sold 5x5 eth'}
-            </RX.Text>
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, width: 200, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
-              <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                {'Buy in Opensea'}
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Winner: Every 10 sales 0.05eth'}
               </RX.Text>
-
-            </RX.Image >
-          </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: width * 0.2, borderRadius: 24, minWidth: 300, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
-            <RX.Image source={ImageSource.tier2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 100, marginTop: 20, marginBottom: 10, }]}>
-              {'Silver'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Winner: Every 10 sales 0.10eth'}
-            </RX.Text>
-            <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 200 }]}>
-              {'Jackpot: After all sold 10x 2eth'}
-            </RX.Text>
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 200, flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
-              <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                {'Buy in Opensea'}
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Jackpot: After all sold 10x 1eth'}
               </RX.Text>
+              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', width: 200, marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
+                <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
+                  {'Buy in Opensea'}
+                </RX.Text>
 
+              </RX.Image >
             </RX.Image >
-          </RX.Image >
-        </RX.View >
-      </RX.Image>
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 300, width: width * 0.2, borderRadius: 24, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
+              <RX.Image source={ImageSource.tier3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 150, marginTop: 20, marginBottom: 10, }]}>
+                {'Gold'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Winner: every 10 sales 0.25eth'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Jackpot: after all sold 5x5 eth'}
+              </RX.Text>
+              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, width: 200, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
+                <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
+                  {'Buy in Opensea'}
+                </RX.Text>
+
+              </RX.Image >
+            </RX.Image >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: width * 0.2, borderRadius: 24, minWidth: 300, marginTop: 40, height: height * 0.65, alignSelf: isTiny ? 'center' : 'stretch' }} >
+              <RX.Image source={ImageSource.tier2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 150, marginTop: 20, marginBottom: 10, }]}>
+                {'Silver'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Winner: Every 10 sales 0.10eth'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { textAlign: 'center', marginBottom: 10, width: 250 }]}>
+                {'Jackpot: After all sold 10x 2eth'}
+              </RX.Text>
+              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 200, flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
+                <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
+                  {'Buy in Opensea'}
+                </RX.Text>
+
+              </RX.Image >
+            </RX.Image >
+          </RX.View >
+        </RX.View>}
     </RX.View>
     {isTiny ? <RX.View style={{ flex: 1, flexDirection: 'row', alignSelf: 'stretch' }}>
-      <RX.Image source={ImageSource.caru2} resizeMode={width < 1100 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: 20, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 2.3, flex: 1, alignSelf: 'stretch' }} >
+      <RX.View style={{ marginTop: 20, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 2.3, flex: 1, alignSelf: 'stretch' }} >
         <RX.View style={{ width: width, height: 50, marginTop: 40, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
           <RX.Image source={ImageSource.road} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginBottom: 10, width: 350, height: 50, }} />
 
         </RX.View >
         <RX.View style={{ flex: 1, width: width, height: height, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 5, marginLeft: 5, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
-            <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+            <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 150, marginBottom: 10, }]}>
               {'Dao'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3, { width: 170, textAlign: "center" }]}>
               {'Vote on:'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 170, textAlign: "center" }]}>
               {' -The future of this Project '}
             </RX.Text>
 
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 170, textAlign: "center" }]}>
               {' -Artis of next lauch(es) '}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 170, textAlign: "center" }]}>
               {' -Utilities on next projects'}
             </RX.Text>
 
 
           </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 5, marginLeft: 5, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
-            <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+            <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', justifyContent: "center", alignItems: "center", width: 220, marginBottom: 10, }]}>
               {'LaunchPad'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'Creation of a lauchpad website to be the jumping-off point for the best projects launching in the NFT space.'}
             </RX.Text>
 
@@ -280,48 +371,48 @@ export const HomeHook = ({
         <RX.View style={{ flex: 1, width: width, height: height * 0.15, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
 
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 5, marginLeft: 5, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
-            <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+            <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Whitelists'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'We will orgnize partnershipts with other (upcoming) projects and arrange guaranteeed whitelist sport for our holders'}
             </RX.Text>
 
           </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-            <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 107, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 5, marginLeft: 5, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+            <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 107, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Airdrops'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'-Free 1 nft airdrop on all our projects '}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'-Free random valuable airdrops from vault 2 '}
             </RX.Text>
 
           </RX.Image >
         </RX.View >
-        <RX.View style={{ flex: 1, width: width, height: height * 0.15, marginBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-            <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+        <RX.View style={{ flex: 1, width: width, height: height * 0.15, marginBottom: 10, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 5, marginLeft: 5, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+            <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Community'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'VIP membership in our discord server. Vip giveaways VIP contest'}
             </RX.Text>
 
           </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-            <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+            <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Software'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'Development of nft software for our holders. Mass bindding sniping, build-in-rarity.'}
             </RX.Text>
 
@@ -331,42 +422,42 @@ export const HomeHook = ({
 
         <RX.View style={{ flex: 1, width: width, height: height * 0.15, marginBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-            <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+            <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Vault1'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'Vault 1 with blu-chip nft’s for future ideas(fractionalizing)'}
             </RX.Text>
 
           </RX.Image >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-            <RX.Image source={ImageSource.item8} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+            <RX.Image source={ImageSource.item8} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100, }} />
+            <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
               {'Vault2'}
             </RX.Text>
-            <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+            <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
               {'Vault 2 with nft’s from good projects for airdropping to holders'}
             </RX.Text>
 
           </RX.Image >
         </RX.View >
-      </RX.Image>
+      </RX.View>
     </RX.View > :
 
       <RX.View style={{ flex: 1, flexDirection: 'row', alignSelf: 'stretch' }}>
-        <RX.Image source={ImageSource.caru2} resizeMode={width < 1100 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ marginTop: 20, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 1.1, flex: 1, alignSelf: 'stretch' }} >
-          <RX.View style={{ width: width, height: 50, marginTop: 40, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-            <RX.Image source={ImageSource.road} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginBottom: 10, width: 350, height: 50, }} />
+        <RX.View style={{ marginTop: 0, paddingTop: 30, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 1.4, flex: 1, alignSelf: 'stretch' }} >
+          <RX.View style={{ width: width, height: 100, marginTop: 40, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+            <RX.Image source={ImageSource.road} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginBottom: 10, width: 600, height: 100, }} />
 
           </RX.View >
           <RX.View style={{ flex: 1, width: width, height: height * 0.15, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Dao'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -385,10 +476,10 @@ export const HomeHook = ({
 
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'LaunchPad'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -396,7 +487,7 @@ export const HomeHook = ({
               </RX.Text>
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
               <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
@@ -407,9 +498,9 @@ export const HomeHook = ({
               </RX.Text>
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 107, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Airdrops'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -422,9 +513,9 @@ export const HomeHook = ({
             </RX.Image >
           </RX.View >
           <RX.View style={{ flex: 1, width: width, height: height * 0.15, marginBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Community'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -432,9 +523,9 @@ export const HomeHook = ({
               </RX.Text>
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Software'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -442,9 +533,9 @@ export const HomeHook = ({
               </RX.Text>
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Vault1'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -452,9 +543,9 @@ export const HomeHook = ({
               </RX.Text>
 
             </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item8} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
                 {'Vault2'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3, { width: 220 }]}>
@@ -463,64 +554,65 @@ export const HomeHook = ({
 
             </RX.Image >
           </RX.View >
-        </RX.Image>
-      </RX.View >}
-    {isTiny ?
-      <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'column', width, height: height * 1.3, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-        <RX.Image source={ImageSource.caru2} resizeMode={width < 1100 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ width: width, height: (height), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
-          <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
-            <RX.Image source={ImageSource.background} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 350, height: 400, alignSelf: 'center' }} />
+        </RX.View>
+      </RX.View >
+    }
+    {
+      isTiny ?
+        <RX.View style={{ flex: 1, marginTop: 60, flexDirection: 'column', width, height: height * 1.4, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
+          <RX.View style={{ paddingBottom: 40, width: width, height: (height * 1.4), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
 
-          </RX.View >
-          <RX.View style={{ flex: 50, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
-
-
-            <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 20, height: 50, }} />
+            <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
+              <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
 
 
-
-            <RX.Text style={[_styles.logoText4, { width: 350 }]}>
-              {'Out team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innnovative projects alogin with hight quality supporting services. Our team consist of 2 guys right now Patrick from Netherlands and Golfredo from Colombia .but will be expand our team as soon as possible with club members that can bring the needed expertise.'}
-            </RX.Text>
-
-            <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 20, width: 200, marginBottom: 5, }]}>
-              {'Follow Us'}
-            </RX.Text>
-            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
-
-          </RX.View >
-
-        </RX.Image>
-      </RX.View> :
-      <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 160), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-        <RX.Image source={ImageSource.caru2} resizeMode={width < 1100 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ width: width * 0.8, height: (height - 160), flex: 1, alignSelf: 'stretch' }} >
-          <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
-            <RX.Image source={ImageSource.background} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 350, marginRight: 30, height: 400, alignSelf: 'flex-end' }} />
-
-          </RX.View >
-          <RX.View style={{ flex: 50, paddingRight: 50, justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'stretch' }} >
-
-
-            <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 20, height: 50, }} />
+              <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 300, marginLeft: 0, marginBottom: 0, height: 90, }} />
 
 
 
-            <RX.Text style={[_styles.logoText4, { width: 350 }]}>
-              {'Out team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innnovative projects alogin with hight quality supporting services. Our team consist of 2 guys right now Patrick from Netherlands and Golfredo from Colombia .but will be expand our team as soon as possible with club members that can bring the needed expertise.'}
-            </RX.Text>
+              <RX.Text style={[_styles.logoText4, { width: width * 0.7, marginTop: 15, marginBottom: 40 }]}>
+                {'Out team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innnovative projects alogin with hight quality supporting services. Our team consist of 2 guys right now Patrick from Netherlands and Golfredo from Colombia .but will be expand our team as soon as possible with club members that can bring the needed expertise.'}
+              </RX.Text>
 
-            <RX.Text style={[_styles.logoText6, { textAlign: 'left', marginTop: 20, width: 200, marginBottom: 5, }]}>
-              {'Follow Us'}
-            </RX.Text>
-            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 10, width: 200, marginBottom: 5, }]}>
+                {'Follow Us'}
+              </RX.Text>
+              <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
 
-          </RX.View >
+            </RX.View >
 
-        </RX.Image>
-      </RX.View>}
+          </RX.View>
+        </RX.View> :
+        <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
+          <RX.Image source={ImageSource.caru2} resizeMode={width < 1100 ? 'cover' : 'contain'} resizeMethod={'auto'} style={{ width: width * 0.8, height: (height - 80), flex: 1, alignSelf: 'stretch' }} >
+            <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
+              <RX.Image source={ImageSource.background} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 350, marginRight: 30, height: 400, alignSelf: 'flex-end' }} />
 
-    <RX.View style={{ width: width, height: height * 0.1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-      <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 20, width: width, marginBottom: 5, }]}>
+            </RX.View >
+            <RX.View style={{ flex: 50, paddingRight: 50, paddingTop: 50, justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'stretch' }} >
+
+
+              <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 20, height: 50, }} />
+
+
+
+              <RX.Text style={[_styles.logoText4, { width: 350 }]}>
+                {'Out team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innnovative projects alogin with hight quality supporting services. Our team consist of 2 guys right now Patrick from Netherlands and Golfredo from Colombia .but will be expand our team as soon as possible with club members that can bring the needed expertise.'}
+              </RX.Text>
+
+              <RX.Text style={[_styles.logoText6, { textAlign: 'left', marginTop: 20, width: 200, marginBottom: 5, }]}>
+                {'Follow Us'}
+              </RX.Text>
+              <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
+
+            </RX.View >
+
+          </RX.Image>
+        </RX.View>
+    }
+
+    <RX.View style={{ width: width, height: height * 0.15, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: isTiny ? 0 : 20, width: width, marginBottom: 5, }]}>
         {'CryptoInvest ©'}
       </RX.Text>
     </RX.View >

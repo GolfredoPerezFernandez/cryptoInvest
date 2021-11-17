@@ -12,9 +12,16 @@ import CurrentUserStore from '../stores/CurrentUserStore';
 interface CreateTodoPanelProps extends RX.CommonProps {
 }
 
+interface Entries {
+    img: string;
+    imgText: string;
+    title: string;
+    content: string;
+}
 interface CreateTodoPanelState {
     todoText: string;
     isLogin: boolean;
+    entries: Entries[];
 }
 
 const _styles = {
@@ -52,15 +59,35 @@ const _styles = {
 };
 
 
+import ImageSource from 'modules/images';
 const Moralis = require('moralis');
 const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
 const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
 Moralis.start({ serverUrl, appId })
-
 export default class HomePanel extends RX.Component<CreateTodoPanelProps, CreateTodoPanelState> {
     protected _buildState(props: CreateTodoPanelProps, initState: boolean): Partial<CreateTodoPanelState> {
         const partialState: Partial<CreateTodoPanelState> = {
             isLogin: CurrentUserStore.getLogin() ?? false,
+            entries: [
+                {
+                    img: ImageSource.tier1,
+                    imgText: 'Jackpot: After all sold 10x 1eth',
+                    title: "Bronze",
+                    content: 'Winner: Every 10 sales 0.05eth'
+                },
+                {
+                    img: ImageSource.tier3,
+                    imgText: 'Jackpot: after all sold 5x5 eth',
+                    title: "Gold",
+                    content: 'Winner: every 10 sales 0.25eth'
+                },
+                {
+                    img: ImageSource.tier2,
+                    imgText: 'Jackpot: After all sold 10x 2eth',
+                    title: "Silver",
+                    content: 'Winner: Every 10 sales 0.10eth'
+                },
+            ]
         };
         return partialState;
     }
