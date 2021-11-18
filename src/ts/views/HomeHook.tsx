@@ -199,7 +199,7 @@ export const HomeHook = ({
     _mountedVideo = component;
   }
   console.log(width)
-  return <RX.ScrollView style={{ flex: 1, backgroundColor: '#353A40', alignSelf: 'stretch' }} >
+  return <RX.ScrollView style={{ flex: 1, backgroundColor: 'black', alignSelf: 'stretch' }} >
     {isTiny ? <RX.View style={{ width: width, height: 50, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
       <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 300, height: 50, }} />
 
