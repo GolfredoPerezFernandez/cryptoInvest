@@ -24,9 +24,11 @@ export interface ImageSourceBase {
     screen: string;
     logo: string;
     logo2: string;
+    moralis: string;
     road: string;
     front: string;
     caru2: string;
     caru3: string;
     metamask: string;
+    stripe: string;
 }

@@ -37,6 +37,8 @@ class ImageSource implements ImageSourceBase {
     get screen() { return require('../../../images/screen.png'); }
     get logo() { return require('../../../images/logo.png'); }
     get logo2() { return require('../../../images/logo2.png'); }
+    get stripe() { return require('../../../images/stripe.png'); }
+    get moralis() { return require('../../../images/moralis.png'); }
 }
 
 export default new ImageSource();
