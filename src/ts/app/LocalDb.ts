@@ -9,7 +9,6 @@ import { DbProvider, DbSchema } from 'nosqlprovider';
 import * as SyncTasks from 'synctasks';
 
 import * as TodoModels from '../models/TodoModels';
-
 // The actual value is just a string, but the type system can extract this extra info.
 type DBStore<Name extends string, ObjectType, KeyFormat> = string & { name?: Name; objectType?: ObjectType; keyFormat?: KeyFormat };
 type DBIndex<Store extends DBStore<string, any, any>, IndexKeyFormat> = string & { store?: Store; indexKeyFormat?: IndexKeyFormat };
@@ -40,6 +39,12 @@ const _appSchema: DbSchema = {
         },
     ],
 };
+
+const Moralis = require('moralis');
+const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
+const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+Moralis.start({ serverUrl, appId })
+
 
 class LocalDb {
     private _db: DbProvider | undefined;
@@ -81,16 +86,134 @@ class LocalDb {
 
         return task.promise();
     }
-
-    // Returns all todo items from the DB.
-    getAllTodos(): SyncTasks.Promise<TodoModels.Todo[]> {
+    getAllDBGold() {
+       
         if (!this._db) {
             return SyncTasks.Rejected('Database not open');
         }
-
-        return this._db.openTransaction([Stores.todoItems], false).then(tx => tx.getStore(Stores.todoItems)).then(store => store.openPrimaryKey().getAll() as SyncTasks.Promise<TodoModels.Todo[]>).fail(this._handleDbFail);
+        return this.getDBGold()
+    }
+     getAllDBSilver(){
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getDBSilver()
+    }
+     getAllDBBronze() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getDBBronze()
     }
 
+    getAllWinnersSilver() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getWinnersSilver()
+    }
+    
+
+    getWinnersSilver = () => {
+
+        const ownedItems = Moralis.Cloud.run('getWinnersSilver')
+        return ownedItems;
+    }
+    getAllWinnersGold() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getWinnersGold()
+    }
+    
+
+    getWinnersGold = () => {
+
+        const ownedItems = Moralis.Cloud.run('getWinnersGold')
+        return ownedItems;
+    }
+    getAllWinnersBronze() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getWinnersBronze()
+    }
+    
+
+    getWinnersBronze = () => {
+
+        const ownedItems = Moralis.Cloud.run('getWinnersBronze')
+        return ownedItems;
+    }
+    // Returns all todo items from the DB.
+     getAllGold() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getGold()
+    }
+     getAllSilver(){
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getSilver()
+    }
+     getAllBronze() {
+       
+        if (!this._db) {
+            return SyncTasks.Rejected('Database not open');
+        }
+        return this.getBronze()
+    }
+
+      getBronze = () => {
+
+        const ownedItems = Moralis.Cloud.run('getBronze')
+        return ownedItems;
+    }
+
+
+    getSilver =  () => {
+        const ownedItems = Moralis.Cloud.run('getSilver')
+        return ownedItems;
+
+    }
+
+
+    getGold =  () => {
+        const ownedItems = Moralis.Cloud.run('getGold')
+        return ownedItems;
+
+    }
+
+    getDBBronze = () => {
+
+        const ownedItems = Moralis.Cloud.run('getDBBronze')
+        return ownedItems;
+    }
+
+
+    getDBSilver =  () => {
+        const ownedItems = Moralis.Cloud.run('getDBSilver')
+        return ownedItems;
+
+    }
+
+
+
+    getDBGold = () => {
+     
+        const ownedItems = Moralis.Cloud.run('getDBGold')
+        return ownedItems;
+      
+    }
     // Adds a new todo item to the DB.
     putTodo(todo: TodoModels.Todo): SyncTasks.Promise<void> {
         if (!this._db) {

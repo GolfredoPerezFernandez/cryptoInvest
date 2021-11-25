@@ -22,9 +22,13 @@ import TodoListPanel from './TodoListPanel';
 import TopBarComposite from './TopBarComposite';
 import TopBarStack from './TopBarStack';
 import ViewTodoPanel from './ViewTodoPanel';
-import HomePanel from './HomePanel';
 import { HomeHook } from './HomeHook';
 import ResponsiveWidthStore from '../stores/ResponsiveWidthStore';
+import CurrentUserStore from '../stores/CurrentUserStore';
+import ViewTodoPanel2 from './ViewTodoPanel2';
+import TodoListPanel2 from './TodoListPanel2';
+import TodosStore from '../stores/TodosStore';
+import { RaffleHook } from './RaffleHook';
 
 interface RootViewProps extends RX.CommonProps {
     onLayout?: (e: RX.Types.ViewOnLayoutEvent) => void;
@@ -34,7 +38,9 @@ interface RootViewState {
     viewTitle: string;
     width: number;
     isTiny: boolean;
+    isWinners: boolean;
     height: number;
+    loading: boolean;
     navContext: NavModels.RootNavContext;
 }
 
@@ -46,7 +52,7 @@ const _styles = {
     stackViewBackground: RX.Styles.createViewStyle({
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
     }),
 };
 
@@ -60,6 +66,8 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             viewTitle: this._getViewTitle(newNavContext),
             height: ResponsiveWidthStore.getHeight(),
             width: ResponsiveWidthStore.getWidth(),
+            isWinners: TodosStore.getIsWinners(),
+            loading: CurrentUserStore.getLoading(),
             isTiny: ResponsiveWidthStore.isSmallOrTinyScreenSize(),
             navContext: newNavContext,
         };
@@ -109,7 +117,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             const showBackButton = this._showBackButton(compositeContext.viewId);
             return (
                 <RX.View style={_styles.root} onLayout={this.props.onLayout}>
-                    <TopBarComposite showBackButton={showBackButton} onBack={this._onBack} />
+                    <TopBarComposite loading={this.state.loading} showBackButton={showBackButton} onBack={this._onBack} />
                     {this._renderMainView()}
                 </RX.View>
             );
@@ -164,6 +172,8 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
         return (
             <RX.View style={_styles.stackViewBackground}>
                 <TopBarStack
+                    loading={this.state.loading}
+                    width={this.state.width}
                     title={this.state.viewTitle}
                     showBackButton={showBackButton}
                     onBack={this._onBack}
@@ -176,17 +186,25 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
     private _renderSceneContents(viewId: NavModels.NavViewId) {
         switch (viewId) {
             case NavModels.NavViewId.TodoList:
+            case NavModels.NavViewId.TodoList:
                 return (
-                    <TodoListPanel
-                        onSelect={this._onSelectTodoFromList}
-                        onCreateNew={this._onCreateNewTodo}
-                    />
-                );
+                    <RX.View>
+                        {this.state.isWinners ? <TodoListPanel2
+                            onSelect={this._onSelectTodoFromList2}
+                            onCreateNew={this._onCreateNewTodo}
+                        /> : <TodoListPanel
+                            onSelect={this._onSelectTodoFromList}
+                            onCreateNew={this._onCreateNewTodo}
+                        />}
 
+                    </RX.View>
+                );
             case NavModels.NavViewId.NewTodo:
                 return <CreateTodoPanel />;
             case NavModels.NavViewId.ViewHome:
-                return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+                return <HomeHook navContext={this.state.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            case NavModels.NavViewId.ViewRaffle:
+                return <RaffleHook />;
 
             case NavModels.NavViewId.ViewTodo:
                 const viewContext = this._findNavContextForRoute(viewId) as NavModels.ViewTodoViewNavContext;
@@ -194,11 +212,22 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
                     return null;
                 }
                 return <ViewTodoPanel todoId={viewContext.todoId} />;
+            case NavModels.NavViewId.ViewTodo2:
+                const viewContext2 = this._findNavContextForRoute(viewId) as NavModels.ViewTodoViewNavContext2;
+                if (!viewContext2) {
+                    return null;
+                }
+                return <ViewTodoPanel2 todoId={viewContext2.todoId} />;
 
             default:
-                return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+                return <HomeHook navContext={this.state.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
+
+
+    private _onSelectTodoFromList2 = (selectedId: string) => {
+        NavContextStore.navigateToTodoList(undefined, false, false, selectedId);
+    };
 
     private _onSelectTodoFromList = (selectedId: string) => {
         NavContextStore.navigateToTodoList(selectedId, false);

@@ -37,6 +37,7 @@ const _styles = {
         margin: 8,
         fontSize: FontSizes.size16,
         alignSelf: 'stretch',
+        color: 'white',
         backgroundColor: 'transparent',
     }),
     buttonContainer: RX.Styles.createViewStyle({
@@ -73,7 +74,7 @@ export default class ViewTodoPanel2 extends ComponentBase<ViewTodoPanelProps, Vi
         if (this.state.isLogin === true) {
 
         } else {
-            NavContextStore.navigateToTodoList(undefined, false, undefined, true)
+            NavContextStore.navigateToTodoList(undefined, false, true, undefined)
         }
     }
     render() {

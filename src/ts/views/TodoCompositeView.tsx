@@ -15,18 +15,24 @@ import { Colors } from '../app/Styles';
 
 import CreateTodoPanel from './CreateTodoPanel';
 import TodoListPanel from './TodoListPanel';
+import TodoListPanel2 from './TodoListPanel2';
 import ViewTodoPanel from './ViewTodoPanel';
-import { HomeHook } from './HomeHook';
+import ViewTodoPanel2 from './ViewTodoPanel2';
+import HomePanel from './HomePanel';
 import CurrentUserStore from '../stores/CurrentUserStore';
+import { HomeHook } from './HomeHook';
 import ResponsiveWidthStore from '../stores/ResponsiveWidthStore';
+import { RaffleHook } from './RaffleHook';
 
 export interface TodoCompositeViewProps extends RX.CommonProps {
     navContext: NavModels.TodoRootNavContext;
 }
 
 interface TodoCompositeViewState {
-    height: number;
+    isLogin: boolean;
     width: number;
+    height: number;
+    isRaffles: boolean;
     isTiny: boolean;
 }
 
@@ -35,42 +41,51 @@ const _styles = {
         flex: 1,
         alignSelf: 'stretch',
         flexDirection: 'row',
+        backgroundColor: 'black'
     }),
     leftPanelContainer: RX.Styles.createViewStyle({
         width: 400,
+        backgroundColor: 'black',
         flexDirection: 'column',
     }),
     rightPanelContainer: RX.Styles.createViewStyle({
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: Colors.grayF8,
+        backgroundColor: 'black',
     }),
 };
-
 export default class TodoCompositeView extends ComponentBase<TodoCompositeViewProps, TodoCompositeViewState> {
     protected _buildState(props: TodoCompositeViewProps, initState: boolean): Partial<TodoCompositeViewState> {
         const partialState: Partial<TodoCompositeViewState> = {
             width: ResponsiveWidthStore.getWidth(),
             height: ResponsiveWidthStore.getHeight(),
+            isLogin: CurrentUserStore.getLogin(),
+            isRaffles: CurrentUserStore.getRaffles(),
             isTiny: ResponsiveWidthStore.isSmallOrTinyScreenSize(),
         };
         return partialState;
     }
-
-
     render(): JSX.Element | null {
         return (
             <RX.View style={_styles.viewContainer}>
-                {true ? null : <RX.View style={_styles.leftPanelContainer}>
-                    <TodoListPanel
-                        selectedTodoId={this.props.navContext.todoList.selectedTodoId || ''}
-                        onSelect={this._onSelectTodo}
-                        onCreateNew={this._onCreateNewTodo}
-                    />
-                </RX.View>}
+                {this.state.isRaffles == true ?
+                    <RX.View style={_styles.leftPanelContainer}>
+                        <TodoListPanel
+                            selectedTodoId={this.props.navContext.todoList.selectedTodoId || ''}
+                            onSelect={this._onSelectTodo}
+                            onCreateNew={this._onCreateNewTodo}
+                        />
+                    </RX.View> : null}
                 <RX.View style={_styles.rightPanelContainer}>
                     {this._renderRightPanel()}
                 </RX.View>
+                {this.state.isRaffles == true ? <RX.View style={_styles.leftPanelContainer}>
+                    <TodoListPanel2
+                        selectedTodoId={this.props.navContext.todoList2.selectedTodoId2 || ''}
+                        onSelect={this._onSelectTodo2}
+                        onCreateNew={this._onCreateNewTodo}
+                    />
+                </RX.View> : null}
             </RX.View>
         );
     }
@@ -84,15 +99,24 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
             return (
                 <ViewTodoPanel todoId={this.props.navContext.todoList.selectedTodoId} />
             );
-        } else if (this.props.navContext.showHomePanel) {
+        } else if (this.props.navContext.todoList2.selectedTodoId2) {
             return (
-                <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
+                <ViewTodoPanel2 todoId={this.props.navContext.todoList2.selectedTodoId2} />
+            );
+        } else if (this.props.navContext.showRafflePanel) {
+            return (
+                <RaffleHook />
             );
         } else {
-            return <HomeHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            return <HomeHook navContext={this.props.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
 
+    private _onSelectTodo2 = (todoId: string) => {
+        console.log('entro')
+
+        NavContextStore.navigateToTodoList(undefined, false, false, todoId);
+    };
     private _onSelectTodo = (todoId: string) => {
         NavContextStore.navigateToTodoList(todoId, false);
     };

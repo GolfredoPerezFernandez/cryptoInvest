@@ -164,16 +164,20 @@ import ImageSource from 'modules/images';
 const { Carousel } = require('reactxp-carousel')
 import * as RX from 'reactxp';
 import { useState } from 'react';
+import TodoListPanel2 from './TodoListPanel2';
+import NavContextStore from '../stores/NavContextStore';
 
 export const HomeHook = ({
   width,
   isTiny,
   height,
+  navContext,
   entries,
 }: {
   isTiny: boolean,
   entries: Entries[];
   width: number;
+  navContext: any;
   height: number;
 }) => {
   const [nftTokenAddress, setNftTokenAddress] = useState("0x88B48F654c30e99bc2e4A1559b4Dcf1aD93FA656")
@@ -189,6 +193,11 @@ export const HomeHook = ({
   const [loading, setLoading] = useState(false)
   const [alert, setAlert] = useState('')
 
+  const _onSelectTodo2 = (todoId: string) => {
+    console.log('entro')
+
+    NavContextStore.navigateToTodoList(undefined, false, false, todoId);
+  };
   const _playVideo = () => {
     if (_mountedVideo) {
       _mountedVideo.mute(true);
@@ -676,8 +685,15 @@ export const HomeHook = ({
                 <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 10, width: 200, marginBottom: 5, }]}>
                   {'Follow Us'}
                 </RX.Text>
-                <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
+                <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
 
+                  <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
+
+                </RX.Button>
+                <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+                  <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
+
+                </RX.Button>
               </RX.View >
 
             </RX.View>
@@ -701,18 +717,37 @@ export const HomeHook = ({
               <RX.Text style={[_styles.logoText6, { textAlign: 'left', marginTop: 20, width: 200, marginBottom: 5, }]}>
                 {'Follow Us'}
               </RX.Text>
-              <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
+              <RX.View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+                  <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
 
+                </RX.Button>
+
+                <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+                  <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, marginLeft: 30, width: 70, height: 70, }} />
+
+                </RX.Button>
+              </RX.View >
             </RX.View >
 
           </RX.View>
       }
+
+      <RX.View style={{ marginTop: isTiny ? 0 : 70, backgroundColor: 'black', flexDirection: 'row', height: 500, width: isTiny ? width * 0.9 : 600, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
+
+        <TodoListPanel2
+          onSelect={() => null}
+          onCreateNew={() => null}
+        />
+
+      </RX.View>
 
       <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
         <RX.Image source={ImageSource.logo} style={{ width: 250, marginTop: 5, height: 70 }} />
 
       </RX.View >
     </RX.View >
+
   </RX.ScrollView >
 
 

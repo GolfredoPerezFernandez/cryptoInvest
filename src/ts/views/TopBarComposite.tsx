@@ -77,6 +77,7 @@ import * as UI from '@sproutch/ui';
 export interface TopBarCompositeProps extends RX.CommonProps {
     showBackButton: boolean;
     onBack?: () => void;
+    loading: boolean;
 }
 import CurrentUserStore from '../stores/CurrentUserStore';
 import AccountMenuButton2 from './AccountMenuButton2';
@@ -84,8 +85,8 @@ import { User } from '../models/IdentityModels';
 import SimpleDialog from '../controls/SimpleDialog';
 
 const Moralis = require('moralis');
-const serverUrl = "https://qqdpez4ourk2.moralishost.com:2053/server";
-const appId = "kVVoRWButUY31vShqdGGQmiya4L0n3kF5aRTUVXk";
+const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
+const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
 Moralis.start({ serverUrl, appId });
 interface TopBarCompositeState {
     isLogin: boolean;
@@ -95,6 +96,7 @@ interface TopBarCompositeState {
     isMetamask: boolean;
     totalNfts: number;
     isMarketplace: boolean;
+    isAdmin: boolean;
     user: User;
     totalMarket: number;
 }
@@ -105,6 +107,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
         const partialState: Partial<TopBarCompositeState> = {
             isLogin: CurrentUserStore.getLogin(),
             user: CurrentUserStore.getUser(),
+            isAdmin: CurrentUserStore.getisAdmin()
         };
         return partialState;
     }
@@ -129,14 +132,17 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
             <RX.View style={_styles.background}>
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
-                    {!this.state.isLogin ?
+                    {!this.state.isLogin ? this.props.loading ? <UI.Spinner color={'white'} size={'medium'} /> :
                         <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (
                             <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, alignSelf: 'center', marginRight: 5, width: 14, height: 14 }} />
-                        )} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 250, marginBottom: 5, borderRadius: 11, }], label: _styles.label }
-                        } elevation={4} variant={"outlined"} label="Authenticate" />
+                        )} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 160, marginBottom: 5, borderRadius: 11, }], label: _styles.label }
+                        } elevation={4} variant={"outlined"} label="Metamask" />
                         :
                         <RX.View style={{ height: 80, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                            {this.state.isAdmin ? <UI.Button onPress={() => this._onPressRaffles()} style={{ root: [{ alignSelf: 'center' }], content: [{ backgroundColor: '#FFC06F', width: 160, marginBottom: 5, borderRadius: 11, }], label: _styles.label }
+                            } elevation={4} variant={"outlined"} label="Raffles" /> : null}
 
+                            <RX.View style={{ width: 20 }}></RX.View>
 
                             <AccountMenuButton2 onLogOut={this.onLogOut} username={this.state.user.ethAddress} avatar={this.state.user.avatar === '' ? '' : this.state.user.avatar.url()} onPress={() => this._onPressModal} />
 
@@ -179,6 +185,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
     private async onLogOut() {
 
 
+        CurrentUserStore.setRaffles(false)
         CurrentUserStore.setLogin(false)
         CurrentUserStore.setUser('', '', '', '', '', '', '')
 
@@ -186,28 +193,16 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
         NavContextStore.navigateToTodoList(undefined, false, true)
         await Moralis.User.logOut();
     }
+    _onPressRaffles() {
+        CurrentUserStore.setRaffles(true)
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, true)
+    }
     _onPressTodo = async (e: RX.Types.SyntheticEvent) => {
         e.stopPropagation()
-        const chainId2 = 80001;
-        const chainName = "POLYGON Mumbai";
-        const currencyName = "MATIC";
-        const currencySymbol = "MATIC";
-        const rpcUrl = "https://speedy-nodes-nyc.moralis.io/d260aa2c8aca7707222e4d3c/polygon/mumbai";
-        const blockExplorerUrl = "https://explorer-mumbai.maticvigil.com/";
+        CurrentUserStore.setLoading(true);
         try {
 
-            await Moralis.enableWeb3()
-            await Moralis.addNetwork(
-                chainId2,
-                chainName,
-                currencyName,
-                currencySymbol,
-                rpcUrl,
-                blockExplorerUrl
-            )
 
-
-            Moralis.switchNetwork('0x13881');
 
             await Moralis.authenticate().then(async (user: any) => {
                 let username = user.get('username')
@@ -218,7 +213,13 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
 
 
                 let avatar = user.get('avatar')
+                if (address === '0xfd2b6f391066d8eafa910fe73ea90c197c21d338' || address === '0x069dffd8d5e00952d956aef824d3e3dcdadeea63' || address === '0X069DFFD8D5E00952D956AEF824D3E3DCDADEEA63' || address === '0x5e569bbc0a04f1b01cb76905f40557647536e6b1') {
 
+                    await CurrentUserStore.setIsAdmin(true)
+
+                } else {
+                    await CurrentUserStore.setIsAdmin(false)
+                }
                 if (avatar === undefined) {
 
 
@@ -229,10 +230,14 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                     CurrentUserStore.setUser(username, '', createdAt, sessionToken, updatedAt, avatar, address)
                     CurrentUserStore.setLogin(true)
                 }
+
+                CurrentUserStore.setLoading(false);
                 return
             })
         } catch (error) {
             CurrentUserStore.setLogin(false)
+
+            CurrentUserStore.setLoading(false);
             return
         }
 
@@ -257,6 +262,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
     private _onPressLogo = (e: RX.Types.SyntheticEvent) => {
         e.stopPropagation();
 
+        CurrentUserStore.setRaffles(false)
         NavContextStore.navigateToTodoList('', false);
     };
 

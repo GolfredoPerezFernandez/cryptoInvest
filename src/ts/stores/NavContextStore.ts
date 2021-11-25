@@ -84,8 +84,8 @@ export class NavContextStore extends StoreBase {
         return this._isUsingStackNav;
     }
 
-    navigateToTodoList(selectedTodoId?: string, showNewTodoPanel = false,showHomePanel=false) {
-        this.setNavContext(NavActions.createTodoListContext(this._isUsingStackNav, selectedTodoId, showNewTodoPanel,showHomePanel));
+    navigateToTodoList(selectedTodoId?: string, showNewTodoPanel = false,showHomePanel=false,selectedTodoId2?: string,showRafflePanel=false) {
+        this.setNavContext(NavActions.createTodoListContext(this._isUsingStackNav, selectedTodoId, showNewTodoPanel,showHomePanel,selectedTodoId2,showRafflePanel));
     }
 
     popNavigationStack() {

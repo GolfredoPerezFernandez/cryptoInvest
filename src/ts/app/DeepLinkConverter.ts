@@ -23,29 +23,39 @@ export default class DeepLinkConverter {
             const topViewContext = stackContext.stack[stackContext.stack.length - 1];
 
             if (topViewContext instanceof NavModels.TodoListViewNavContext) {
-                url += '/todos';
+                url += '/owners';
                 return url;
             } else if (topViewContext instanceof NavModels.ViewTodoViewNavContext) {
-                url += '/todos?selected=' + encodeURIComponent(topViewContext.todoId);
+                url += '/owners?selected=' + encodeURIComponent(topViewContext.todoId);
                 return url;
-            } else if (topViewContext instanceof NavModels.NewTodoViewNavContext) {
-                url += '/todos?selected=new';
+            } else if (topViewContext instanceof NavModels.ViewTodoViewNavContext2) {
+                url += '/winners?selected=' + encodeURIComponent(topViewContext.todoId);
+                return url;
+            }else if (topViewContext instanceof NavModels.NewTodoViewNavContext) {
+                url += '/owners?selected=new';
                 return url;
             }else if (topViewContext instanceof NavModels.HomeViewNavContext) {
                 url += '/';
+                return url;
+            }else if (topViewContext instanceof NavModels.RaffleViewNavContext) {
+                url += '/raffles';
                 return url;
             }
         } else {
             const compositeContext = context as NavModels.CompositeRootNavContext;
             if (compositeContext instanceof NavModels.TodoRootNavContext) {
-                url += '/todos';
+                url += '/owners';
                 const todoListContext = context as NavModels.TodoRootNavContext;
                 if (todoListContext.showNewTodoPanel) {
-                    url += '?selected=new';
+                    url += '?owners=new';
                 } else if (todoListContext.todoList.selectedTodoId) {
-                    url += '?selected=' + encodeURIComponent(todoListContext.todoList.selectedTodoId);
-                }else if (todoListContext.showHomePanel) {
+                    url += '?owners=' + encodeURIComponent(todoListContext.todoList.selectedTodoId);
+                } else if (todoListContext.todoList.selectedTodoId2) {
+                    url += '?winners=' + encodeURIComponent(todoListContext.todoList.selectedTodoId2);
+                } else if (todoListContext.showHomePanel) {
                     url = '' ;
+                }else if (todoListContext.showRafflePanel) {
+                    url = '/raffles' ;
                 }
                 return url;
             } else {
@@ -69,7 +79,7 @@ export default class DeepLinkConverter {
         }
 
         switch (pathElements[1]) {
-            case 'todos':
+            case 'owners':
                 let selectedTodoId: string | undefined;
                 let showNewPanel = false;
 
@@ -81,10 +91,22 @@ export default class DeepLinkConverter {
                 }
 
                 return NavActions.createTodoListContext(isStackNav, selectedTodoId, showNewPanel);
+                case 'winners':
+                        let selectedTodoId2: string | undefined;
+        
+                        const selectedValue2 = urlObj.searchParams.get('selected');
+                        if (selectedValue2) {
+                            selectedTodoId2 = selectedValue2;
+                        }
+        
+                        return NavActions.createTodoListContext(isStackNav, undefined, false,false,selectedTodoId2);
+                
                 case '':
-                    return NavActions.createTodoListContext(isStackNav, selectedTodoId, false,true);
- 
-            default:
+                            return NavActions.createTodoListContext(isStackNav, selectedTodoId, false,true);
+                 case 'raffles':
+                                return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,true);
+        
+                            default:
                 return undefined;
         }
     }

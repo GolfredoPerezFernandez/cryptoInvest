@@ -7,12 +7,16 @@
 
 import { autoSubscribe, AutoSubscribeStore, StoreBase } from 'resub';
 
-import { User } from '../models/IdentityModels';
+import { UserMoralis } from '../models/IdentityModels';
+
 
 @AutoSubscribeStore
 export class CurrentUserStore extends StoreBase {
     // TODO - properly initialize
-    private _user: User = {
+  private loading=false
+  private isLogin=false
+  private random=0
+    private _userMoralis: UserMoralis = {
         createdAt: '',
         updatedAt: '',
         emailVerified: false,
@@ -22,10 +26,44 @@ export class CurrentUserStore extends StoreBase {
         objectId:'',
         avatar:'',
         ethAddress:''
-    };
+    }
+    private transfer=false
+    @autoSubscribe
+    getTransfer(): boolean {
+        return this.transfer
+    }
+    
+    setTransfer(isMarket:boolean) { 
+ 
+        this.transfer = isMarket
+        this.trigger()
+    }
+    private _cargando=false
+    @autoSubscribe
+    getCargando(): boolean {
+        return this._cargando
+    }
+    
+    setCargando(isMarket:boolean) { 
+ 
+        this._cargando = isMarket
+        this.trigger()
+    }
+
+    private _isAdmin: boolean = false
+    @autoSubscribe
+    getisAdmin(): boolean {
+        return this._isAdmin
+    }
+    setIsAdmin(user: boolean) {
+        this._isAdmin = user
+        this.trigger();
+
+    }
+
     setUser(username:string,email:string,createdAt:string,sessionToken:string,updatedAt:string,avatar:string,ethAddress:string) { 
        
-        this._user = {
+        this._userMoralis = {
             createdAt,
             updatedAt,
             emailVerified: false,
@@ -36,29 +74,115 @@ export class CurrentUserStore extends StoreBase {
             avatar ,
             ethAddress,
         };
-        console.log(this._user)
         this.trigger();
 
     }
-
+    private raffles: boolean = false
     @autoSubscribe
-    getUser(): User | undefined {
-        return this._user;
+    getRaffles() {
+
+        return this.raffles
+    }
+    setRaffles(password: boolean) {
+        this.raffles = password
+        this.trigger()
+    }
+    private _wallet: string = ''
+    private totalBuyers: number = 0
+    @autoSubscribe
+    getLogin() {
+
+        return this.isLogin
+    }
+    setLogin(password: boolean) {
+        this.isLogin = password
+        this.trigger()
+    }
+    private activeId2: string = 'gold'
+    @autoSubscribe
+    getActive2() {
+
+        return this.activeId2
+    }
+    setActive2(password: string) {
+        this.activeId2 = password
+        this.trigger()
+    }
+    private activeId: string = 'gold'
+    @autoSubscribe
+    getActive() {
+
+        return this.activeId
+    }
+    setActive(password: string) {
+        this.activeId = password
+        this.trigger()
+    }
+    setWalletAddress(item:string) { 
+ 
+        this._wallet = item
+        this.trigger()
+    }
+    setTotalBuyers(item:number) { 
+ 
+        this.totalBuyers = item
+        this.trigger()
+    }
+    @autoSubscribe
+    getTotalBuyers(): number {
+        return this.totalBuyers
+    }
+    setRandomNumber(item:number) { 
+ 
+        this.random = item
+        this.trigger()
+    }
+    @autoSubscribe
+    getRandomNumber(): number {
+        return this.random
+    }
+    setLoading(item:boolean) { 
+ 
+        this.loading = item
+        this.trigger()
+    }
+    @autoSubscribe
+    getLoading(): boolean {
+        return this.loading
+    }
+    @autoSubscribe
+    getWalletAddress(): string {
+        return this._wallet
+    }
+    private _isRinkeby: boolean = false
+    setRinkeby(item:boolean) { 
+ 
+        this._isRinkeby = item
+        this.trigger()
+    }
+    @autoSubscribe
+    getRinkeby(): boolean {
+        return this._isRinkeby
+    }
+    private _isMetamask = false
+    setMetamask(isMarket:boolean) { 
+ 
+        this._isMetamask = isMarket
+        this.trigger()
+    }
+    @autoSubscribe
+    getMetamask(): boolean {
+        return this._isMetamask
     }
 
-    private _isLogin: boolean = false
     @autoSubscribe
-    getLogin(): boolean {
-        return this._isLogin
+    getUser(): UserMoralis {
+        return this._userMoralis
     }
-    setLogin(user: boolean) {
-        this._isLogin = user
-        this.trigger();
 
-    }
     @autoSubscribe
-    getFullName(): string {
-        return this._user ? this._user.ethAddress : '';
+    getEthAddress(): string {
+        return this._userMoralis.ethAddress;
     }
 }
 

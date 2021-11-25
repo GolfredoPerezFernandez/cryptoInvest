@@ -34,6 +34,7 @@ interface TodoListPanelState {
     searchString: string;
     activeId: string;
     tokenAddress: string;
+    raffles: boolean;
     winnersGold: Winner[]
     loading: boolean;
     winnersBronze: Winner[];
@@ -45,8 +46,9 @@ const _listItemHeight = 80;
 const _styles = {
     listScroll: RX.Styles.createViewStyle({
         flexDirection: 'column',
+        flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: Colors.contentBackground,
+        backgroundColor: "black",
     }),
     todoListHeader2: RX.Styles.createViewStyle({
         height: 60,
@@ -69,8 +71,13 @@ const _styles = {
     }),
     container: RX.Styles.createViewStyle({
         flex: 1,
+        borderWidth: 2,
+        borderRadius: 44,
+        borderColor: '#FFC06F',
         alignSelf: 'stretch',
-        backgroundColor: Colors.contentBackground,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'black',
     }),
     addTodoButton: RX.Styles.createViewStyle({
         margin: 8,
@@ -79,7 +86,7 @@ const _styles = {
     }),
     text1: RX.Styles.createTextStyle({
         font: Fonts.displayBold,
-        color: 'black',
+        color: 'white',
     }),
     buttonText: RX.Styles.createTextStyle({
         font: Fonts.displayRegular,
@@ -96,6 +103,11 @@ const _styles = {
         fontSize: FontSizes.size14,
         color: 'black',
     }),
+    label2: RX.Styles.createTextStyle({
+        font: Fonts.displayBold,
+        fontSize: FontSizes.size14,
+        color: 'white',
+    }),
 
 };
 import CurrentUserStore from '../stores/CurrentUserStore';
@@ -105,6 +117,7 @@ const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
 const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
 Moralis.start({ serverUrl, appId })
 
+import ImageSource from 'modules/images';
 import * as UI from '@sproutch/ui';
 
 import NavContextStore from '../stores/NavContextStore';
@@ -112,7 +125,7 @@ export default class TodoListPanel2 extends ComponentBase<TodoListPanelProps, To
     protected _buildState(props: TodoListPanelProps, initState: boolean): Partial<TodoListPanelState> | undefined {
         const partialState: Partial<TodoListPanelState> = {
             tokenAddress: '0x256a7001f057d59cd792ff0a1e7d7c14bb0b19e6',
-
+            raffles: CurrentUserStore.getRaffles(),
             winnersGold: TodosStore.getWinnersGold(),
             winnersSilver: TodosStore.getWinnersSilver(),
             winnersBronze: TodosStore.getWinnersBronze(),
@@ -157,30 +170,28 @@ export default class TodoListPanel2 extends ComponentBase<TodoListPanelProps, To
 
 
 
-                {this.state.tokenAddress !== '' ? <RX.View style={_styles.todoListHeader2}>
+                <RX.View style={_styles.todoListHeader2}>
+                    <RX.Image source={ImageSource.todoSmall} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, width: 250, marginLeft: 0, marginBottom: 0, height: 70, }} />
 
-                    <RX.Text style={[_styles.text1, {}]} >
-                        {'Winners :'}
-                    </RX.Text>
-                </RX.View> : null}
+                </RX.View>
 
-                <RX.View style={{ flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                <RX.View style={{ flexDirection: 'row', marginTop: 30, backgroundColor: 'black', height: 50, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
                     {this.state.activeId === 'gold' ?
-                        <UI.Button onPress={() => this.goToGold()} palette='primary' style={{ root: [{}], content: [{ borderRadius: 0, borderWidth: 0, width: 133, backgroundColor: 'gray' }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToGold()} palette='primary' style={{ root: [{}], content: [{ borderRadius: 0, borderWidth: 0, flex: 33, height: 50, backgroundColor: 'FFC06F' }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Gold " + "(" + this.state.winnersGold.length + ")"} /> :
-                        <UI.Button onPress={() => this.goToGold()} style={{ content: [{ borderRadius: 0, borderWidth: 0, width: 133, backgroundColor: 'white' }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToGold()} style={{ content: [{ borderRadius: 0, borderWidth: 0, flex: 33, backgroundColor: 'black', height: 50 }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Gold " + "(" + this.state.winnersGold.length + ")"} />}
 
                     {this.state.activeId === 'silver' ?
-                        <UI.Button onPress={() => this.goToSilver()} palette='primary' style={{ root: [{}], content: [{ borderRadius: 0, borderWidth: 0, width: 133, backgroundColor: 'gray' }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToSilver()} palette='primary' style={{ root: [{}], content: [{ borderRadius: 0, borderWidth: 0, flex: 33, height: 50, backgroundColor: 'FFC06F' }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Silver " + "(" + this.state.winnersSilver.length + ")"} /> :
-                        <UI.Button onPress={() => this.goToSilver()} style={{ content: [{ borderRadius: 0, borderWidth: 0, width: 133, backgroundColor: 'white' }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToSilver()} style={{ content: [{ borderRadius: 0, borderWidth: 0, flex: 33, height: 50, backgroundColor: 'black' }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Silver " + "(" + this.state.winnersSilver.length + ")"} />}
 
                     {this.state.activeId === 'bronze' ?
-                        <UI.Button onPress={() => this.goToBronze()} palette={'primary'} style={{ content: [{ borderRadius: 0, borderWidth: 0, width: 133, backgroundColor: 'gray' }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToBronze()} palette={'primary'} style={{ content: [{ borderRadius: 0, borderWidth: 0, height: 50, flex: 33, backgroundColor: 'FFC06F' }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Bronze " + "(" + this.state.winnersBronze.length + ")"} /> :
-                        <UI.Button onPress={() => this.goToBronze()} style={{ content: [{ borderRadius: 0, width: 133, borderWidth: 0, backgroundColor: 'white', }], label: _styles.label }
+                        <UI.Button onPress={() => this.goToBronze()} style={{ content: [{ borderRadius: 0, flex: 33, borderWidth: 0, height: 50, backgroundColor: 'black', }], label: _styles.label2 }
                         } elevation={4} variant={"outlined"} label={"Bronze " + "(" + this.state.winnersBronze.length + ")"} />}
 
                 </RX.View>
@@ -195,18 +206,24 @@ export default class TodoListPanel2 extends ComponentBase<TodoListPanelProps, To
     }
 
     async goToGold() {
+        if (this.state.raffles == true) {
 
-        NavContextStore.navigateToTodoList()
+            NavContextStore.navigateToTodoList(undefined, false, false, undefined, true)
+        }
         CurrentUserStore.setActive2('gold')
     }
     async goToSilver() {
+        if (this.state.raffles == true) {
 
-        NavContextStore.navigateToTodoList()
+            NavContextStore.navigateToTodoList(undefined, false, false, undefined, true)
+        }
         CurrentUserStore.setActive2('silver')
     }
     async goToBronze() {
+        if (this.state.raffles == true) {
 
-        NavContextStore.navigateToTodoList()
+            NavContextStore.navigateToTodoList(undefined, false, false, undefined, true)
+        }
         CurrentUserStore.setActive2('bronze')
     }
     private _filterTodoList(sortedTodos: TodoListItemInfo[], searchString: string): TodoListItemInfo[] {
@@ -233,6 +250,8 @@ export default class TodoListPanel2 extends ComponentBase<TodoListPanelProps, To
 
     private _onPressTodo = (todoId: string) => {
         this.props.onSelect(todoId);
+
+
         console.log('todoId')
         this.setState({
             searchString: '',

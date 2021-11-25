@@ -23,7 +23,8 @@ export enum NavViewId {
     NewTodo,
     ViewTodo,
     ViewHome,
-
+    ViewTodo2,
+ViewRaffle,
 }
 
 // ----------------------------------------
@@ -62,19 +63,23 @@ export class StackRootNavContext extends RootNavContext {
 export class TodoRootNavContext extends CompositeRootNavContext {
     todoList: TodoListViewNavContext;
 
-    constructor(selectedTodoId?: string, public showNewTodoPanel = false,public showHomePanel=false) {
+    todoList2: TodoListViewNavContext2;
+    constructor(selectedTodoId?: string, public showNewTodoPanel = false,public showHomePanel=false,selectedTodoId2?: string,public showRafflePanel=false) {
         super(NavViewId.TodoComposite);
         this.todoList = new TodoListViewNavContext(selectedTodoId);
+        this.todoList2 = new TodoListViewNavContext2(selectedTodoId,selectedTodoId2);
+
     }
 
     clone(): TodoRootNavContext {
-        return new TodoRootNavContext(this.todoList.selectedTodoId, this.showNewTodoPanel,this.showHomePanel);
+        return new TodoRootNavContext(this.todoList.selectedTodoId, this.showNewTodoPanel,this.showHomePanel,this.todoList.selectedTodoId2,this.showRafflePanel);
     }
 }
 
 // ----------------------------------------
 // View nav contexts
 // ----------------------------------------
+
 
 export abstract class ViewNavContext {
     constructor(public viewId: NavViewId) {
@@ -83,15 +88,34 @@ export abstract class ViewNavContext {
     abstract clone(): ViewNavContext;
 }
 
+export class ViewTodoViewNavContext2 extends ViewNavContext {
+    constructor(public todoId: string) {
+        super(NavViewId.ViewTodo2);
+    }
+
+    clone(): ViewTodoViewNavContext2 {
+        return new ViewTodoViewNavContext2(this.todoId);
+    }
+}
 export class TodoListViewNavContext extends ViewNavContext {
-    constructor(public selectedTodoId?: string) {
+    constructor(public selectedTodoId?: string,public selectedTodoId2?: string) {
         super(NavViewId.TodoList);
     }
 
     clone(): TodoListViewNavContext {
-        return new TodoListViewNavContext(this.selectedTodoId);
+        return new TodoListViewNavContext(this.selectedTodoId,this.selectedTodoId2);
     }
 }
+export class RaffleViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewRaffle);
+    }
+
+    clone(): RaffleViewNavContext {
+        return new RaffleViewNavContext();
+    }
+}
+
 export class HomeViewNavContext extends ViewNavContext {
     constructor() {
         super(NavViewId.ViewHome);
@@ -119,5 +143,15 @@ export class ViewTodoViewNavContext extends ViewNavContext {
 
     clone(): ViewTodoViewNavContext {
         return new ViewTodoViewNavContext(this.todoId);
+    }
+}
+
+export class TodoListViewNavContext2 extends ViewNavContext {
+    constructor(public selectedTodoId?: string,public selectedTodoId2?: string) {
+        super(NavViewId.TodoList);
+    }
+
+    clone(): TodoListViewNavContext2 {
+        return new TodoListViewNavContext2(this.selectedTodoId,this.selectedTodoId2);
     }
 }

@@ -13,6 +13,7 @@ import { Colors, Fonts, FontSizes } from '../app/Styles';
 import { Winner, } from '../models/TodoModels';
 import TodosStore from '../stores/TodosStore';
 import NavContextStore from '../stores/NavContextStore';
+import CurrentUserStore from '../stores/CurrentUserStore';
 
 interface TodoListItemProps extends RX.CommonProps {
     height: number;
@@ -24,6 +25,7 @@ interface TodoListItemProps extends RX.CommonProps {
 
 interface TodoListItemState {
     isWinners: boolean;
+    isRaffle: boolean;
     heightStyle: RX.Types.ViewStyleRuleSet;
 }
 
@@ -32,18 +34,18 @@ const _itemBorderWidth = 1;
 const _styles = {
     container: RX.Styles.createButtonStyle({
         alignSelf: 'stretch',
-        borderBottomWidth: _itemBorderWidth,
+        borderBottomWidth: 0,
         borderColor: Colors.borderSeparatorLight,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: Colors.white,
+        backgroundColor: 'black',
     }),
     todoNameText: RX.Styles.createTextStyle({
         flex: -1,
         fontSize: FontSizes.size16,
         font: Fonts.displayRegular,
-        color: 'black',
+        color: 'white',
         margin: 8,
     }),
     todoNameTextSelected: RX.Styles.createTextStyle({
@@ -57,10 +59,10 @@ const _styles = {
         width: 24,
     }),
     hovering: RX.Styles.createButtonStyle({
-        backgroundColor: Colors.listItemHover,
+        backgroundColor: "black",
     }),
     selected: RX.Styles.createButtonStyle({
-        backgroundColor: Colors.listItemSelected,
+        backgroundColor: 'black',
     }),
 };
 
@@ -68,6 +70,7 @@ export default class TodoListItem2 extends ComponentBase<TodoListItemProps, Todo
     protected _buildState(props: TodoListItemProps, initState: boolean): Partial<TodoListItemState> | undefined {
         const partialState: Partial<TodoListItemState> = {
             isWinners: TodosStore.getIsWinners(),
+            isRaffle: CurrentUserStore.getRaffles(),
             heightStyle: RX.Styles.createViewStyle({
                 height: props.height,
             }, false),
@@ -89,14 +92,10 @@ export default class TodoListItem2 extends ComponentBase<TodoListItemProps, Todo
 
 
         e.stopPropagation();
-        console.log("desde winner");
-        if (this.state.isWinners === true) {
-            NavContextStore.navigateToTodoList(undefined, false, this.props.todo.owner_of, false)
 
-        } else {
-            NavContextStore.navigateToTodoList(this.props.todo.owner_of, false, undefined, false)
+        if (this.state.isRaffle == true) {
+            NavContextStore.navigateToTodoList(undefined, false, false, this.props.todo.owner_of)
         }
-        this.props.onPress(this.props.todo.owner_of);
     };
 
     private _onRenderItem = (isHovering: boolean) => {

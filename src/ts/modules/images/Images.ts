@@ -30,5 +30,6 @@ export interface ImageSourceBase {
     caru2: string;
     caru3: string;
     metamask: string;
+    twitter: string;
     stripe: string;
 }

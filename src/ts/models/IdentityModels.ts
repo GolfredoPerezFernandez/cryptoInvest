@@ -18,3 +18,15 @@ export interface User {
     objectId:string;
     ethAddress:string;
 }
+
+export interface UserMoralis{
+    username:string;
+    email:string;
+    createdAt:string;
+    sessionToken:string;
+    emailVerified:boolean;
+    updatedAt:string;
+    avatar:any;
+    objectId:string;
+    ethAddress:string;
+}

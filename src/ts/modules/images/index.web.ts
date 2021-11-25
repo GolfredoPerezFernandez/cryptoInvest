@@ -34,5 +34,6 @@ class ImageSource implements ImageSourceBase {
     tier3 = AppConfig.getImagePath('tier3.png');
     stripe = AppConfig.getImagePath('stripe.png');
     moralis = AppConfig.getImagePath('moralis.png');
+    twitter = AppConfig.getImagePath('twitter.png');
 }
 export default new ImageSource();

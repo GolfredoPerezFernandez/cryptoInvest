@@ -75,11 +75,7 @@ export default class CreateTodoPanel extends RX.Component<CreateTodoPanelProps, 
 
     private _saveTodo() {
         if (!!this.state && this.state.todoText) {
-            const newTodo = TodosStore.addTodo(this.state.todoText);
-
             this.setState({ todoText: '' });
-
-            NavContextStore.navigateToTodoList(NavContextStore.isUsingStackNav() ? undefined : newTodo.id);
         }
     }
 }
