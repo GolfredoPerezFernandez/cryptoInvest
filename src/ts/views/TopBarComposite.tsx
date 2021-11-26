@@ -132,6 +132,23 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
             <RX.View style={_styles.background}>
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
+
+                    <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 27, height: 27, marginRight: 20, }}>
+
+                        <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+
+                            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 27, height: 27, }} />
+
+                        </RX.Button>
+                    </RX.View>
+                    <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 24, height: 24, marginRight: 20, }}>
+
+                        <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+                            <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 24, height: 24, }} />
+
+                        </RX.Button>
+                    </RX.View>
+
                     {!this.state.isLogin ? this.props.loading ? <UI.Spinner color={'white'} size={'medium'} /> :
                         <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (
                             <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, alignSelf: 'center', marginRight: 5, width: 14, height: 14 }} />
