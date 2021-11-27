@@ -227,7 +227,7 @@ export const HomeHook = ({
                   </RX.Text>
                   <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, marginBottom: 20, width: 200, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
                     <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                      {'Buy in Opensea'}
+                      {'Buy on Opensea'}
                     </RX.Text>
 
                   </RX.Image >
@@ -261,7 +261,7 @@ export const HomeHook = ({
                 </RX.Text>
                 <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', width: 200, marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
                   <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                    {'Buy in Opensea'}
+                    {'Buy on Opensea'}
                   </RX.Text>
 
                 </RX.Image >
@@ -279,7 +279,7 @@ export const HomeHook = ({
                 </RX.Text>
                 <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 10, width: 200, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
                   <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                    {'Buy in Opensea'}
+                    {'Buy on Opensea'}
                   </RX.Text>
 
                 </RX.Image >
@@ -297,7 +297,7 @@ export const HomeHook = ({
                 </RX.Text>
                 <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: 200, flexDirection: 'column', marginRight: 10, marginLeft: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 24, marginTop: 20, height: 57, }} >
                   <RX.Text style={[_styles.logoText3, { width: 200, textAlign: 'center', justifyContent: 'center', alignItems: 'center' }]}>
-                    {'Buy in Opensea'}
+                    {'Buy on Opensea'}
                   </RX.Text>
 
                 </RX.Image >
@@ -327,7 +327,7 @@ export const HomeHook = ({
               </RX.Text>
 
               <RX.Text style={[_styles.logoText3Tiny, { width: 170, textAlign: "center" }]}>
-                {' -Artis of next lauch(es) '}
+                {' -Arts of next lauch(es) '}
               </RX.Text>
               <RX.Text style={[_styles.logoText3Tiny, { width: 170, textAlign: "center" }]}>
                 {' -Utilities on next projects'}
@@ -357,7 +357,7 @@ export const HomeHook = ({
                 {'Whitelists'}
               </RX.Text>
               <RX.Text style={[_styles.logoText3Tiny, { width: 160, textAlign: "center" }]}>
-                {'We will orgnize partnershipts with other (upcoming) projects and arrange guaranteeed whitelist sport for our holders'}
+                {'We will orgnize partnerships with other (upcoming) projects and arrange guaranteed whitelist spot for our holders'}
               </RX.Text>
 
             </RX.Image >
@@ -447,7 +447,7 @@ export const HomeHook = ({
                 </RX.Text>
 
                 <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                  {' -Artis of next lauch(es) '}
+                  {' -Arts of next launch(es) '}
                 </RX.Text>
                 <RX.Text style={[_styles.logoText3, { width: 220 }]}>
                   {' -Utilities on next projects'}
@@ -462,7 +462,7 @@ export const HomeHook = ({
                   {'LaunchPad'}
                 </RX.Text>
                 <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                  {'Creation of a lauchpad website to be the jumping-off point for the best projects launching in the NFT space.'}
+                  {'Creation of a launchpad website to be the jumping-off point for the best projects launching in the NFT space.'}
                 </RX.Text>
 
               </RX.Image >
@@ -473,7 +473,7 @@ export const HomeHook = ({
                   {'Whitelists'}
                 </RX.Text>
                 <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                  {'We will orgnize partnershipts with other (upcoming) projects and arrange guaranteeed whitelist sport for our holders'}
+                  {'We will orgnize partnerships with other (upcoming) projects and arrange guaranteeed whitelist spot for our holders'}
                 </RX.Text>
 
               </RX.Image >
@@ -508,7 +508,7 @@ export const HomeHook = ({
                   {'Software'}
                 </RX.Text>
                 <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                  {'Development of nft software for our holders. Mass bindding sniping, build-in-rarity.'}
+                  {'Development of nft software for our holders. Mass bidding sniping, build-in-rarity.'}
                 </RX.Text>
 
               </RX.Image >
