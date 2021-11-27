@@ -11,14 +11,12 @@ import { ComponentBase } from 'resub';
 
 import NavContextStore from '../stores/NavContextStore';
 import * as NavModels from '../models/NavModels';
-import { Colors } from '../app/Styles';
 
 import CreateTodoPanel from './CreateTodoPanel';
 import TodoListPanel from './TodoListPanel';
 import TodoListPanel2 from './TodoListPanel2';
 import ViewTodoPanel from './ViewTodoPanel';
 import ViewTodoPanel2 from './ViewTodoPanel2';
-import HomePanel from './HomePanel';
 import CurrentUserStore from '../stores/CurrentUserStore';
 import { HomeHook } from './HomeHook';
 import ResponsiveWidthStore from '../stores/ResponsiveWidthStore';

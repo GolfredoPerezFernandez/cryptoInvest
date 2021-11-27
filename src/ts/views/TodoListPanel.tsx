@@ -119,8 +119,8 @@ import CurrentUserStore from '../stores/CurrentUserStore';
 import NavContextStore from '../stores/NavContextStore';
 
 const Moralis = require('moralis');
-const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
-const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
+const appId = "eXd9zckjUGhiRrW5TVszfh7u5ZNfmxbXCTCMMjLc";
 Moralis.start({ serverUrl, appId })
 
 
@@ -707,14 +707,6 @@ export default class TodoListPanel extends ComponentBase<TodoListPanelProps, Tod
         const ownedItems = await Moralis.Cloud.run('getWinnersBronze')
         return ownedItems;
     }
-    private _onPressCreateNewTodo = async () => {
-        CurrentUserStore.setLogin(true)
-        this.props.onCreateNew();
-        this.setState({
-            searchString: '',
-            filteredTodoList: this.state.todos,
-        });
-    };
 
 
     getBronze = async () => {

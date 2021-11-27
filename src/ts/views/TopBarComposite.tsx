@@ -13,9 +13,6 @@ import { ComponentBase } from 'resub';
 import HoverButton from '../controls/HoverButton';
 import NavContextStore from '../stores/NavContextStore';
 import { Colors, Fonts, FontSizes } from '../app/Styles';
-import VerticalSeparator from '../controls/VerticalSeparator';
-
-import AccountMenuButton from './AccountMenuButton';
 
 const _styles = {
     background: RX.Styles.createViewStyle({
@@ -85,8 +82,8 @@ import { User } from '../models/IdentityModels';
 import SimpleDialog from '../controls/SimpleDialog';
 
 const Moralis = require('moralis');
-const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
-const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
+const appId = "eXd9zckjUGhiRrW5TVszfh7u5ZNfmxbXCTCMMjLc";
 Moralis.start({ serverUrl, appId });
 interface TopBarCompositeState {
     isLogin: boolean;
@@ -283,22 +280,4 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
         NavContextStore.navigateToTodoList('', false);
     };
 
-    private _onPressHelp = (e: RX.Types.SyntheticEvent) => {
-        e.stopPropagation();
-
-        RX.Linking.openUrl('https://www.bing.com/search?q=help');
-    };
-
-    private _onRenderHelpButton = (isHovering: boolean) => {
-        const textStyles = [_styles.linkText];
-        if (isHovering) {
-            textStyles.push(_styles.linkTextHover);
-        }
-
-        return (
-            <RX.Text style={textStyles}>
-                {'Help'}
-            </RX.Text>
-        );
-    };
 }

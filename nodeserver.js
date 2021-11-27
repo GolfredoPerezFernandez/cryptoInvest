@@ -50,6 +50,8 @@ function handler(request, response) {
         'localhost',
         'cryptoinvests.herokuapp.com',
         'http://cryptoinvests.herokuapp.com/',
+        'cryptoinvestnft.com',
+        'http://cryptoinvestnft.com/',
     ];
 
     if (!_.includes(knownHosts, request.headers.host)) {

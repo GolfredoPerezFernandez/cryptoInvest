@@ -10,7 +10,6 @@
 import * as RX from 'reactxp';
 import { ComponentBase } from 'resub';
 
-import CurrentUserStore from '../stores/CurrentUserStore';
 import SimpleMenu, { MenuItem } from '../controls/SimpleMenu';
 import { Colors, Fonts, FontSizes } from '../app/Styles';
 

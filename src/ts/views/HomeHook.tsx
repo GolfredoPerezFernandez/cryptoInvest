@@ -3,11 +3,10 @@ import { Colors, Fonts, FontSizes } from '../app/Styles';
 
 
 const Moralis = require('moralis');
-const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
-const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
+const appId = "eXd9zckjUGhiRrW5TVszfh7u5ZNfmxbXCTCMMjLc";
 Moralis.start({ serverUrl, appId });
 
-import RXVideo from 'reactxp-video';
 
 const _styles = {
   container: RX.Styles.createViewStyle({
@@ -150,7 +149,6 @@ const _styles = {
     color: Colors.white,
   }),
 };
-import * as UI from '@sproutch/ui';
 
 interface Entries {
   img: string;
@@ -163,9 +161,7 @@ import ImageSource from 'modules/images';
 
 const { Carousel } = require('reactxp-carousel')
 import * as RX from 'reactxp';
-import { useState } from 'react';
 import TodoListPanel2 from './TodoListPanel2';
-import NavContextStore from '../stores/NavContextStore';
 
 export const HomeHook = ({
   width,
@@ -180,33 +176,6 @@ export const HomeHook = ({
   navContext: any;
   height: number;
 }) => {
-  const [nftTokenAddress, setNftTokenAddress] = useState("0x88B48F654c30e99bc2e4A1559b4Dcf1aD93FA656")
-  const [nftTokenId, setNftTokenId] = useState("16923634234309235305936278977612378847065311654836719990863808853227023106548")
-  const [contractType, setContractType] = useState("ERC1155")
-  const [amount, setAmount] = useState<any>(0.5)
-
-  var _mountedVideo: RXVideo | undefined;
-  const [startAmount, setStartAmount] = useState<any>(1)
-  const [endAmount, setEndAmount] = useState<any>(0.0001)
-  const [currentNav, setNav] = useState('toAsset')
-
-  const [loading, setLoading] = useState(false)
-  const [alert, setAlert] = useState('')
-
-  const _onSelectTodo2 = (todoId: string) => {
-    console.log('entro')
-
-    NavContextStore.navigateToTodoList(undefined, false, false, todoId);
-  };
-  const _playVideo = () => {
-    if (_mountedVideo) {
-      _mountedVideo.mute(true);
-      _mountedVideo.play();
-    }
-  }
-  const _onMountVideo = (component: RXVideo) => {
-    _mountedVideo = component;
-  }
   console.log(width)
   return <RX.ScrollView style={{ flex: 1, backgroundColor: 'black', alignSelf: 'stretch' }} >
     <RX.View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>

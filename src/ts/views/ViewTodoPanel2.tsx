@@ -14,8 +14,8 @@ import { Winner } from '../models/TodoModels';
 import TodosStore from '../stores/TodosStore';
 import CurrentUserStore from '../stores/CurrentUserStore';
 const Moralis = require('moralis');
-const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
-const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
+const appId = "eXd9zckjUGhiRrW5TVszfh7u5ZNfmxbXCTCMMjLc";
 Moralis.start({ serverUrl, appId })
 export interface ViewTodoPanelProps extends RX.CommonProps {
     todoId: string;

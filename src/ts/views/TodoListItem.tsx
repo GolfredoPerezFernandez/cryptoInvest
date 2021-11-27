@@ -27,7 +27,6 @@ interface TodoListItemState {
     heightStyle: RX.Types.ViewStyleRuleSet;
 }
 
-const _itemBorderWidth = 1;
 
 const _styles = {
     container: RX.Styles.createButtonStyle({

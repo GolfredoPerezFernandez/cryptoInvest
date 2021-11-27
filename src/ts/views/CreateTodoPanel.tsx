@@ -7,10 +7,8 @@
 
 import * as RX from 'reactxp';
 
-import NavContextStore from '../stores/NavContextStore';
 import SimpleButton from '../controls/SimpleButton';
 import { FontSizes, Styles } from '../app/Styles';
-import TodosStore from '../stores/TodosStore';
 
 interface CreateTodoPanelProps extends RX.CommonProps {
 }

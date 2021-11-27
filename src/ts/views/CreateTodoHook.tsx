@@ -3,8 +3,8 @@ import { Fonts, FontSizes } from '../app/Styles';
 
 
 const Moralis = require('moralis');
-const serverUrl = "https://kyyslozorkna.usemoralis.com:2053/server";
-const appId = "eKUfnm9MJRGaWSNh8mjnFpFz5FrPYYGB7xS4J7nC";
+const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
+const appId = "eXd9zckjUGhiRrW5TVszfh7u5ZNfmxbXCTCMMjLc";
 Moralis.start({ serverUrl, appId });
 
 
@@ -160,7 +160,7 @@ export const CreateTodoHook = ({
       console.log(JSON.stringify(res))
       setLoading(false)
 
-    } catch (error) {
+    } catch (error: any) {
       setAlert(error.message)
       setLoading(false)
 
@@ -183,7 +183,7 @@ export const CreateTodoHook = ({
       console.log(JSON.stringify(res))
       setLoading(false)
 
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false)
 
       setAlert(error.message)
@@ -208,7 +208,7 @@ export const CreateTodoHook = ({
       setLoading(false)
 
       setAlert("Sell Order create successful")
-    } catch (error) {
+    } catch (error: any) {
       setAlert(error.message)
       setLoading(false)
 
@@ -234,7 +234,7 @@ export const CreateTodoHook = ({
       setLoading(false)
 
       setAlert("Buy Order create successful")
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false)
 
       // Expire this auction one day from now.
