@@ -140,7 +140,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                     </RX.View>
                     <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 24, height: 24, marginRight: 20, }}>
 
-                        <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+                        <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoinvestNF1")}>
                             <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 24, height: 24, }} />
 
                         </RX.Button>
