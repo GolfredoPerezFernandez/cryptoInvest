@@ -106,7 +106,7 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
                 <RaffleHook />
             );
         } else {
-            return <HomeHook navContext={this.props.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            return <HomeHook navContext={this.props.navContext} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
 

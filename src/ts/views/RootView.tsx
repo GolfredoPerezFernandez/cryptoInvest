@@ -202,7 +202,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             case NavModels.NavViewId.NewTodo:
                 return <CreateTodoPanel />;
             case NavModels.NavViewId.ViewHome:
-                return <HomeHook navContext={this.state.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+                return <HomeHook navContext={this.state.navContext} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
             case NavModels.NavViewId.ViewRaffle:
                 return <RaffleHook />;
 
@@ -220,7 +220,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
                 return <ViewTodoPanel2 todoId={viewContext2.todoId} />;
 
             default:
-                return <HomeHook navContext={this.state.navContext} entries={[]} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+                return <HomeHook navContext={this.state.navContext} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
         }
     }
 

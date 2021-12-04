@@ -32,4 +32,5 @@ export interface ImageSourceBase {
     metamask: string;
     twitter: string;
     stripe: string;
+    check: string;
 }
