@@ -451,6 +451,15 @@ html {
   font-style: normal;
 }
 @font-face {
+  font-family: "Gilroy Regular";
+  src: url("../fonts/Gilroy-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Gilroy-Regular.woff") format("woff"),
+    url("../fonts/Gilroy-Regular.ttf") format("truetype"),
+    url("../fonts/Gilroy-Regular.svg#Gilroy-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "Poppins Regular";
   src: url("../fonts/Poppins.eot?#iefix") format("embedded-opentype"),
     url("../fonts/Poppins.woff") format("woff"),

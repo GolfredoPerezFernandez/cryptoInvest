@@ -29,6 +29,11 @@ import ViewTodoPanel2 from './ViewTodoPanel2';
 import TodoListPanel2 from './TodoListPanel2';
 import TodosStore from '../stores/TodosStore';
 import { RaffleHook } from './RaffleHook';
+import { ProjectHook } from './ProjectHook';
+import { LotteryHook } from './LotteryHook';
+import { RoadMapHook } from './RoadMapHook';
+import { CICHook } from './CICHook';
+import { FAQHook } from './FAQHook';
 
 interface RootViewProps extends RX.CommonProps {
     onLayout?: (e: RX.Types.ViewOnLayoutEvent) => void;
@@ -56,6 +61,8 @@ const _styles = {
     }),
 };
 
+
+import ImageSource from 'modules/images';
 export default class RootView extends ComponentBase<RootViewProps, RootViewState> {
     private _navigator: Navigator | null = null;
 
@@ -117,8 +124,10 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             const showBackButton = this._showBackButton(compositeContext.viewId);
             return (
                 <RX.View style={_styles.root} onLayout={this.props.onLayout}>
-                    <TopBarComposite loading={this.state.loading} showBackButton={showBackButton} onBack={this._onBack} />
+                    <TopBarComposite width={this.state.width} loading={this.state.loading} showBackButton={showBackButton} onBack={this._onBack} />
                     {this._renderMainView()}
+
+
                 </RX.View>
             );
         }
@@ -146,6 +155,18 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
 
                 case NavModels.NavViewId.ViewTodo:
                     return 'Todo Details';
+                case NavModels.NavViewId.ViewRaffle:
+                    return 'Raffles';
+                case NavModels.NavViewId.ViewProject:
+                    return 'Project';
+                case NavModels.NavViewId.ViewLottery:
+                    return 'Lottery';
+                case NavModels.NavViewId.ViewRoadMap:
+                    return 'RoadMap';
+                case NavModels.NavViewId.ViewCIC:
+                    return '$CIC';
+                case NavModels.NavViewId.ViewFAQ:
+                    return 'FAQ';
 
                 default:
                     assert.fail('Unknown view');
@@ -179,13 +200,13 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
                     onBack={this._onBack}
                 />
                 {this._renderSceneContents(viewId)}
+
             </RX.View>
         );
     };
 
     private _renderSceneContents(viewId: NavModels.NavViewId) {
         switch (viewId) {
-            case NavModels.NavViewId.TodoList:
             case NavModels.NavViewId.TodoList:
                 return (
                     <RX.View>
@@ -205,6 +226,16 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
                 return <HomeHook navContext={this.state.navContext} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
             case NavModels.NavViewId.ViewRaffle:
                 return <RaffleHook />;
+            case NavModels.NavViewId.ViewProject:
+                return <ProjectHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            case NavModels.NavViewId.ViewLottery:
+                return <LotteryHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            case NavModels.NavViewId.ViewRoadMap:
+                return <RoadMapHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
+            case NavModels.NavViewId.ViewCIC:
+                return <CICHook />;
+            case NavModels.NavViewId.ViewFAQ:
+                return <FAQHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
 
             case NavModels.NavViewId.ViewTodo:
                 const viewContext = this._findNavContextForRoute(viewId) as NavModels.ViewTodoViewNavContext;

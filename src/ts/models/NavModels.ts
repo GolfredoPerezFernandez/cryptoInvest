@@ -25,6 +25,11 @@ export enum NavViewId {
     ViewHome,
     ViewTodo2,
 ViewRaffle,
+ViewProject,
+ViewLottery,
+ViewRoadMap,
+ViewCIC,
+ViewFAQ
 }
 
 // ----------------------------------------
@@ -64,7 +69,7 @@ export class TodoRootNavContext extends CompositeRootNavContext {
     todoList: TodoListViewNavContext;
 
     todoList2: TodoListViewNavContext2;
-    constructor(selectedTodoId?: string, public showNewTodoPanel = false,public showHomePanel=false,selectedTodoId2?: string,public showRafflePanel=false) {
+    constructor(selectedTodoId?: string, public showNewTodoPanel = false,public showHomePanel=false,selectedTodoId2?: string,public showRafflePanel=false,public showProjectPanel=false,public showLotteryPanel=false,public showRoadMapPanel=false,public showCICPanel=false,public showFAQPanel=false) {
         super(NavViewId.TodoComposite);
         this.todoList = new TodoListViewNavContext(selectedTodoId);
         this.todoList2 = new TodoListViewNavContext2(selectedTodoId,selectedTodoId2);
@@ -72,7 +77,7 @@ export class TodoRootNavContext extends CompositeRootNavContext {
     }
 
     clone(): TodoRootNavContext {
-        return new TodoRootNavContext(this.todoList.selectedTodoId, this.showNewTodoPanel,this.showHomePanel,this.todoList.selectedTodoId2,this.showRafflePanel);
+        return new TodoRootNavContext(this.todoList.selectedTodoId, this.showNewTodoPanel,this.showHomePanel,this.todoList.selectedTodoId2,this.showRafflePanel,this.showProjectPanel,this.showLotteryPanel,this.showRoadMapPanel,this.showCICPanel,this.showFAQPanel);
     }
 }
 
@@ -106,6 +111,52 @@ export class TodoListViewNavContext extends ViewNavContext {
         return new TodoListViewNavContext(this.selectedTodoId,this.selectedTodoId2);
     }
 }
+export class FAQViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewFAQ);
+    }
+
+    clone(): FAQViewNavContext {
+        return new FAQViewNavContext();
+    }
+}
+export class CICViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewCIC);
+    }
+
+    clone(): CICViewNavContext {
+        return new CICViewNavContext();
+    }
+}
+export class RoadMapViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewRoadMap);
+    }
+
+    clone(): RoadMapViewNavContext {
+        return new RoadMapViewNavContext();
+    }
+}
+export class LotteryViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewLottery);
+    }
+
+    clone(): LotteryViewNavContext {
+        return new LotteryViewNavContext();
+    }
+}
+export class ProjectViewNavContext extends ViewNavContext {
+    constructor() {
+        super(NavViewId.ViewProject);
+    }
+
+    clone(): ProjectViewNavContext {
+        return new ProjectViewNavContext();
+    }
+}
+
 export class RaffleViewNavContext extends ViewNavContext {
     constructor() {
         super(NavViewId.ViewRaffle);

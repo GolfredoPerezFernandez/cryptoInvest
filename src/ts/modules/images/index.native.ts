@@ -41,6 +41,8 @@ class ImageSource implements ImageSourceBase {
     get moralis() { return require('../../../images/moralis.png'); }
     get twitter() { return require('../../../images/twitter.png'); }
     get check() { return require('../../../images/check.png'); }
+    get cic() { return require('../../../images/cic.png'); }
+    get project() { return require('../../../images/project.png'); }
 }
 
 export default new ImageSource();

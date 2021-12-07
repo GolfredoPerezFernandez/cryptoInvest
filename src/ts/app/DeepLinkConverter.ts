@@ -40,6 +40,21 @@ export default class DeepLinkConverter {
             }else if (topViewContext instanceof NavModels.RaffleViewNavContext) {
                 url += '/raffles';
                 return url;
+            }else if (topViewContext instanceof NavModels.ProjectViewNavContext) {
+                url += '/project';
+                return url;
+            }else if (topViewContext instanceof NavModels.LotteryViewNavContext) {
+                url += '/lottery';
+                return url;
+            }else if (topViewContext instanceof NavModels.RoadMapViewNavContext) {
+                url += '/roadmap';
+                return url;
+            }else if (topViewContext instanceof NavModels.CICViewNavContext) {
+                url += '/cic';
+                return url;
+            }else if (topViewContext instanceof NavModels.FAQViewNavContext) {
+                url += '/faq';
+                return url;
             }
         } else {
             const compositeContext = context as NavModels.CompositeRootNavContext;
@@ -56,6 +71,16 @@ export default class DeepLinkConverter {
                     url = '' ;
                 }else if (todoListContext.showRafflePanel) {
                     url = '/raffles' ;
+                }else if (todoListContext.showProjectPanel) {
+                    url = '/project' ;
+                }else if (todoListContext.showLotteryPanel) {
+                    url = '/lottery' ;
+                }else if (todoListContext.showRoadMapPanel) {
+                    url = '/roadmap' ;
+                }else if (todoListContext.showCICPanel) {
+                    url = '/cic' ;
+                }else if (todoListContext.showFAQPanel) {
+                    url = '/faq' ;
                 }
                 return url;
             } else {
@@ -105,8 +130,20 @@ export default class DeepLinkConverter {
                             return NavActions.createTodoListContext(isStackNav, selectedTodoId, false,true);
                  case 'raffles':
                                 return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,true);
-        
-                            default:
+                 case 'project':
+                     return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,false,true);
+                case 'lottery':
+                     return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,false,false,true);
+                 case 'roadmap':
+                        return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,false,false,false,true);
+               case 'cic':
+                        return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,false,false,false,false,true);
+                case 'faq':
+                            return NavActions.createTodoListContext(isStackNav, undefined, false,false,undefined,false,false,false,false,false,true);
+                                               
+                    default:
+
+                      
                 return undefined;
         }
     }

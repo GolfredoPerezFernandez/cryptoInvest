@@ -21,6 +21,11 @@ import CurrentUserStore from '../stores/CurrentUserStore';
 import { HomeHook } from './HomeHook';
 import ResponsiveWidthStore from '../stores/ResponsiveWidthStore';
 import { RaffleHook } from './RaffleHook';
+import { ProjectHook } from './ProjectHook';
+import { LotteryHook } from './LotteryHook';
+import { RoadMapHook } from './RoadMapHook';
+import { CICHook } from './CICHook';
+import { FAQHook } from './FAQHook';
 
 export interface TodoCompositeViewProps extends RX.CommonProps {
     navContext: NavModels.TodoRootNavContext;
@@ -104,6 +109,26 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
         } else if (this.props.navContext.showRafflePanel) {
             return (
                 <RaffleHook />
+            );
+        } else if (this.props.navContext.showLotteryPanel) {
+            return (
+                <LotteryHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
+            );
+        } else if (this.props.navContext.showRoadMapPanel) {
+            return (
+                <RoadMapHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
+            );
+        } else if (this.props.navContext.showCICPanel) {
+            return (
+                <CICHook />
+            );
+        } else if (this.props.navContext.showFAQPanel) {
+            return (
+                <FAQHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
+            );
+        } else if (this.props.navContext.showProjectPanel) {
+            return (
+                <ProjectHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
             );
         } else {
             return <HomeHook navContext={this.props.navContext} isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;

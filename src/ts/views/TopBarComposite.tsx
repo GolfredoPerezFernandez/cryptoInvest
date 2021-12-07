@@ -74,12 +74,15 @@ import * as UI from '@sproutch/ui';
 export interface TopBarCompositeProps extends RX.CommonProps {
     showBackButton: boolean;
     onBack?: () => void;
+
+    width: number;
     loading: boolean;
 }
 import CurrentUserStore from '../stores/CurrentUserStore';
 import AccountMenuButton2 from './AccountMenuButton2';
 import { User } from '../models/IdentityModels';
 import SimpleDialog from '../controls/SimpleDialog';
+import TodosStore from '../stores/TodosStore';
 
 const Moralis = require('moralis');
 const serverUrl = "https://dkmypapn65am.usemoralis.com:2053/server";
@@ -110,7 +113,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
     }
     render(): JSX.Element | null {
         let leftContents: JSX.Element | undefined;
-
+        console.log(this.props.width)
         if (this.props.showBackButton) {
             leftContents = (
                 <HoverButton onPress={this._onPressBack} onRenderChild={this._renderBackButton} />
@@ -129,6 +132,18 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
             <RX.View style={_styles.background}>
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
+                    <UI.Button onPress={() => this._onPressHome()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="Home" />
+                    <UI.Button onPress={() => this._onPressProject()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="Project" />
+                    <UI.Button onPress={() => this._onPressLottery()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="Lottery" />
+                    <UI.Button onPress={() => this._onPressRoadMap()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="RoadMap" />
+                    <UI.Button onPress={() => this._onPressCIC()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="$CIC" />
+                    <UI.Button onPress={() => this._onPressFAQ()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01, marginRight: this.props.width * 0.01 }], label: _styles.label }
+                    } elevation={4} variant={"outlined"} label="FAQ" />
 
                     <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 27, height: 27, marginRight: 20, }}>
 
@@ -146,7 +161,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                         </RX.Button>
                     </RX.View>
 
-                    {!this.state.isLogin ? this.props.loading ? <UI.Spinner color={'white'} size={'medium'} /> :
+                    {!this.state.isLogin ? this.props.loading ? <RX.View style={{ width: 160, justifyContent: 'center', alignItems: 'center' }}> <UI.Spinner color={'white'} size={'medium'} /></RX.View> :
                         <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (
                             <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, alignSelf: 'center', marginRight: 5, width: 14, height: 14 }} />
                         )} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 160, marginBottom: 5, borderRadius: 11, }], label: _styles.label }
@@ -207,6 +222,24 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
         NavContextStore.navigateToTodoList(undefined, false, true)
         await Moralis.User.logOut();
     }
+    _onPressHome() {
+        NavContextStore.navigateToTodoList(undefined, false, true, undefined, false, false, false, false, false)
+    }
+    _onPressFAQ() {
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, false, false, false, false, false, true)
+    }
+    _onPressCIC() {
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, false, false, false, false, true)
+    }
+    _onPressRoadMap() {
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, false, false, false, true)
+    }
+    _onPressLottery() {
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, false, false, true)
+    }
+    _onPressProject() {
+        NavContextStore.navigateToTodoList(undefined, false, false, undefined, false, true)
+    }
     _onPressRaffles() {
         CurrentUserStore.setRaffles(true)
         NavContextStore.navigateToTodoList(undefined, false, false, undefined, true)
@@ -244,6 +277,45 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                     CurrentUserStore.setUser(username, '', createdAt, sessionToken, updatedAt, avatar, address)
                     CurrentUserStore.setLogin(true)
                 }
+
+                const ownedItems = Moralis.Cloud.run('getWinnersGold')
+                TodosStore.setWinnersGold(ownedItems)
+
+
+
+                const ownedSilverWinner = Moralis.Cloud.run('getWinnersSilver')
+
+                TodosStore.setWinnersSilver(ownedSilverWinner)
+                const ownedItems2 = Moralis.Cloud.run('getWinnersBronze')
+                TodosStore.setWinnersBronze(ownedItems2)
+
+
+                const ownerBronze = Moralis.Cloud.run('getBronze')
+
+
+                TodosStore.setOwnersBronze(ownerBronze)
+                const ownedSilver = Moralis.Cloud.run('getSilver')
+
+                TodosStore.setOwnersSilver(ownedSilver)
+
+
+                const ownedGold = Moralis.Cloud.run('getGold')
+
+                TodosStore.setOwnersGold(ownedGold)
+
+
+                const ownedDBBronze = Moralis.Cloud.run('getDBBronze')
+
+                TodosStore.setDBOwnersBronze(ownedDBBronze)
+
+
+                const ownedDBSilver = Moralis.Cloud.run('getDBSilver')
+
+                TodosStore.setDBOwnersSilver(ownedDBSilver)
+
+                const ownedDBGold = Moralis.Cloud.run('getDBGold')
+
+                TodosStore.setDBOwnersGold(ownedDBGold)
 
                 CurrentUserStore.setLoading(false);
                 return

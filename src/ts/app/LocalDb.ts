@@ -119,8 +119,6 @@ class LocalDb {
 
     getWinnersSilver = () => {
 
-        const ownedItems = Moralis.Cloud.run('getWinnersSilver')
-        return ownedItems;
     }
     getAllWinnersGold() {
        
@@ -132,9 +130,7 @@ class LocalDb {
     
 
     getWinnersGold = () => {
-
-        const ownedItems = Moralis.Cloud.run('getWinnersGold')
-        return ownedItems;
+ 
     }
     getAllWinnersBronze() {
        
@@ -147,8 +143,6 @@ class LocalDb {
 
     getWinnersBronze = () => {
 
-        const ownedItems = Moralis.Cloud.run('getWinnersBronze')
-        return ownedItems;
     }
     // Returns all todo items from the DB.
      getAllGold() {
@@ -175,34 +169,23 @@ class LocalDb {
 
       getBronze = () => {
 
-        const ownedItems = Moralis.Cloud.run('getBronze')
-        return ownedItems;
     }
 
 
     getSilver =  () => {
-        const ownedItems = Moralis.Cloud.run('getSilver')
-        return ownedItems;
-
     }
 
 
     getGold =  () => {
-        const ownedItems = Moralis.Cloud.run('getGold')
-        return ownedItems;
 
     }
 
     getDBBronze = () => {
 
-        const ownedItems = Moralis.Cloud.run('getDBBronze')
-        return ownedItems;
     }
 
 
     getDBSilver =  () => {
-        const ownedItems = Moralis.Cloud.run('getDBSilver')
-        return ownedItems;
 
     }
 
@@ -210,8 +193,6 @@ class LocalDb {
 
     getDBGold = () => {
      
-        const ownedItems = Moralis.Cloud.run('getDBGold')
-        return ownedItems;
       
     }
     // Adds a new todo item to the DB.

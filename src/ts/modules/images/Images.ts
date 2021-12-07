@@ -33,4 +33,6 @@ export interface ImageSourceBase {
     twitter: string;
     stripe: string;
     check: string;
+    cic: string;
+    project: string;
 }

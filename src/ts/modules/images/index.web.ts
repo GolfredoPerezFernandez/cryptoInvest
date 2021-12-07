@@ -36,5 +36,7 @@ class ImageSource implements ImageSourceBase {
     moralis = AppConfig.getImagePath('moralis.png');
     twitter = AppConfig.getImagePath('twitter.png');
     check = AppConfig.getImagePath('check.png');
+    cic = AppConfig.getImagePath('cic.png');
+    project = AppConfig.getImagePath('project.png');
 }
 export default new ImageSource();
