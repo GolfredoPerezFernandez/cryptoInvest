@@ -284,28 +284,28 @@ export const ProjectHook = ({
       <RX.View style={{ flex: 1, flexDirection: 'row', alignSelf: 'stretch' }}>
         <RX.View style={{ marginTop: 0, justifyContent: 'center', alignItems: 'center', paddingTop: 30, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 2.2, flex: 1, alignSelf: 'stretch' }} >
           <RX.View style={{ width: width, height: 100, marginTop: 40, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-            <RX.Image source={ImageSource.project} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginTop: 40, marginBottom: 20, height: 50, }} />
+            <RX.Image source={ImageSource.project} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginTop: 40, marginBottom: 40, height: 50, }} />
 
           </RX.View >
-          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.7, }} >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 600, width: 700, borderRadius: 24, marginTop: 10, height: 550, }} >
             <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 150, height: 150, }} />
-            <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+            <RX.View style={{ height: 400, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
 
               <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 160, marginBottom: 5, }]}>
                 {'Software'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+              <RX.Text style={[_styles.logoText3, { width: 500, marginTop: 10 }]}>
                 {'One of the key parts of our project will be to develop "nft" software for all our holders. Your membership card (nft) will be used as your license to be able to use the software.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+              <RX.Text style={[_styles.logoText3, { width: 500, marginTop: 10 }]}>
                 {'THIS SOFTWARE IS SO POWERFULL IT WILL MAKE YOU A LOT OF $$.'}
               </RX.Text>
 
-              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+              <RX.Text style={[_styles.logoText3, { width: 500, marginTop: 10 }]}>
                 {"There will be functions like (but not limited to): Finding/Sniping nft's that are X percent under the floor price. Mass bidding on nft's with 1 single wallet signature, build in rarety tool, and a function that can show the properties as soon as they are released by the nft contract.(No need to wait for OS to reveal)."}
               </RX.Text>
 
-              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+              <RX.Text style={[_styles.logoText3, { width: 500, marginTop: 10 }]}>
                 {"Using the DAO there will be voting to make the software (limited) available to the public and generate income for the project/vault."}
               </RX.Text>
             </RX.View>

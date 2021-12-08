@@ -262,7 +262,7 @@ export const RoadMapHook = ({
           </RX.View >
 
         </RX.View > :
-        <RX.View style={{ flex: 1, width: width, height: (height * 1.6), marginBottom: 100, borderColor: "#FFC06F", justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }} >
+        <RX.View style={{ flex: 1, width: width, height: width < 1200 ? (height * 2) : (height * 1.7), marginBottom: 100, borderColor: "#FFC06F", justifyContent: 'flex-start', paddingTop: 100, alignItems: 'center', alignSelf: 'center' }} >
 
 
 
