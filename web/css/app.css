@@ -442,11 +442,11 @@ html {
   }
 }
 @font-face {
-  font-family: "Poppins Light";
-  src: url("../fonts/Poppins-Light.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Poppins-Light.woff") format("woff"),
-    url("../fonts/Poppins-Light.ttf") format("truetype"),
-    url("../fonts/Poppins-Light.svg#Poppins Light") format("svg");
+  font-family: "Gilroy Light";
+  src: url("../fonts/Gilroy-Light.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Gilroy-Light.woff") format("woff"),
+    url("../fonts/Gilroy-Light.ttf") format("truetype"),
+    url("../fonts/Gilroy-Light.svg#Gilroy Light") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -460,84 +460,57 @@ html {
   font-style: normal;
 }
 @font-face {
-  font-family: "Poppins Regular";
-  src: url("../fonts/Poppins.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Poppins.woff") format("woff"),
-    url("../fonts/Poppins.ttf") format("truetype"),
-    url("../fonts/Poppins.svg#Poppins") format("svg");
+  font-family: "Gilroy Semibold";
+  src: url("../fonts/Gilroy-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Gilroy-SemiBold.woff") format("woff"),
+    url("../fonts/Gilroy-SemiBold.ttf") format("truetype"),
+    url("../fonts/Gilroy-SemiBold.svg#Gilroy-SemiBold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Poppins Semibold";
-  src: url("../fonts/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Poppins-SemiBold.woff") format("woff"),
-    url("../fonts/Poppins-SemiBold.ttf") format("truetype"),
-    url("../fonts/Poppins-SemiBold.svg#Poppins-SemiBold") format("svg");
+  font-family: "Gilroy Bold";
+  src: url("../fonts/Gilroy-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Gilroy-Bold.woff") format("woff"),
+    url("../fonts/Gilroy-Bold.ttf") format("truetype"),
+    url("../fonts/Gilroy-Bold.svg#Gilroy Bold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Poppins Bold";
-  src: url("../fonts/Poppins-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Poppins-Bold.woff") format("woff"),
-    url("../fonts/Poppins-Bold.ttf") format("truetype"),
-    url("../fonts/Poppins-Bold.svg#Poppins Bold") format("svg");
-  font-weight: normal;
+  font-family: "Gilroy Regular";
   font-style: normal;
+  font-weight: normal;
+  src: local("Gilroy Regular");
 }
 @font-face {
-  font-family: "Poppins System Light";
+  font-family: "Gilroy Light";
   font-style: normal;
   font-weight: normal;
-  src: local("Poppins Light");
+  src: local("Gilroy Light");
 }
 @font-face {
-  font-family: "Poppins System";
+  font-family: "Gilroy";
   font-style: normal;
   font-weight: normal;
-  src: local("Poppins");
+  src: local("Gilroy");
 }
 @font-face {
-  font-family: "Poppins System Semibold";
+  font-family: "Gilroy Semibold";
   font-style: normal;
   font-weight: normal;
-  src: local("Poppins Semibold");
+  src: local("Gilroy Semibold");
 }
 @font-face {
-  font-family: "Poppins System Bold";
+  font-family: "Gilroy Bold";
   font-style: normal;
   font-weight: normal;
-  src: local("Poppins Bold");
-}
-@font-face {
-  font-family: "SF Light";
-  font-style: normal;
-  font-weight: normal;
-  src: local(".Poppins Light"), local(".Poppins Light");
-}
-@font-face {
-  font-family: "SF Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local(".Poppins Regular"), local(".Poppins Regular");
-}
-@font-face {
-  font-family: "SF Semibold";
-  font-style: normal;
-  font-weight: normal;
-  src: local(".Poppins Semibold"), local(".Poppins Semibold");
-}
-@font-face {
-  font-family: "SF Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local(".Poppins Bold"), local(".Poppins Bold");
+  src: local("Gilroy Bold");
 }
 html {
   height: 100%;
   font-size: 16px;
-  font-family: "SF Regular", "Poppins Regular", sans-serif;
+  font-family: "Gilroy", "Gilroy Regular", sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */

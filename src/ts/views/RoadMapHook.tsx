@@ -121,6 +121,13 @@ const _styles = {
     color: Colors.white,
     opacity: 1,
   }),
+  logoText44: RX.Styles.createTextStyle({
+    font: Fonts.displayBold,
+    fontSize: 16,
+    marginHorizontal: 4,
+    color: Colors.white,
+    opacity: 1,
+  }),
   logoText4: RX.Styles.createTextStyle({
     font: Fonts.displayRegular,
     fontSize: 16,
@@ -339,14 +346,14 @@ export const RoadMapHook = ({
       <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
 
-        <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+        <RX.Text style={[_styles.logoText44, { width: 600, minWidth: 300 }]}>
           {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
         </RX.Text>
       </RX.View >
       <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
 
         <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
-          <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+          <RX.Text style={[_styles.logoText44, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
             {'Follow Us'}
           </RX.Text>
 

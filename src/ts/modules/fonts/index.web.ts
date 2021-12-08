@@ -10,10 +10,10 @@ import { FontBase } from './Fonts';
 class Fonts implements FontBase {
     monospace = 'monospace';
 
-    displayLight = '"SF Semilight", "Segoe System UI Semilight", "Segoe UI Semilight", sans-serif';
+    displayLight = '"Gilroy Light", sans-serif';
     displayRegular = '"Gilroy Regular", sans-serif';
-    displaySemibold = '"SF Semibold", "Segoe System UI Semibold", "Segoe UI Semibold", sans-serif';
-    displayBold = '"SF Bold", "Segoe System UI Bold", "Segoe UI Bold", sans-serif';
+    displaySemibold = '"Gilroy Semibold",sans-serif';
+    displayBold = '"Gilroy Bold"sans-serif';
 }
 
 export default new Fonts();

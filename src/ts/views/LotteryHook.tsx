@@ -123,7 +123,7 @@ const _styles = {
     opacity: 1,
   }),
   logoText4: RX.Styles.createTextStyle({
-    font: Fonts.displayRegular,
+    font: Fonts.displayBold,
     fontSize: 16,
     marginHorizontal: 4,
     color: Colors.white,

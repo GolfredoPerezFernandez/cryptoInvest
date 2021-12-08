@@ -10,10 +10,10 @@ import { FontBase } from './Fonts';
 class Fonts implements FontBase {
     monospace = 'Courier New';
 
-    displayLight = 'Segoe UI';
-    displayRegular = 'Segoe UI';
-    displaySemibold = 'Segoe UI';
-    displayBold = 'Segoe UI';
+    displayLight = 'Gilroy Light';
+    displayRegular = 'Gilroy Regular';
+    displaySemibold = 'Gilroy Semibold';
+    displayBold = 'Gilroy Bold';
 }
 
 export default new Fonts();

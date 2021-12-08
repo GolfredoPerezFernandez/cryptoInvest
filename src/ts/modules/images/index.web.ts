@@ -40,5 +40,6 @@ class ImageSource implements ImageSourceBase {
     project = AppConfig.getImagePath('project.png');
     eth = AppConfig.getImagePath('eth.png');
     puzzle = AppConfig.getImagePath('puzzle.png');
+    copita = AppConfig.getImagePath('copita.png');
 }
 export default new ImageSource();

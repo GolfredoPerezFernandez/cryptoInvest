@@ -133,16 +133,16 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
                     <UI.Button onPress={() => this._onPressHome()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
-                    } elevation={4} variant={"outlined"} label="Home" />
+                    } elevation={4} variant={"outlined"} label="HOME" />
                     <UI.Button onPress={() => this._onPressProject()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
-                    } elevation={4} variant={"outlined"} label="Project" />
+                    } elevation={4} variant={"outlined"} label="PROJECT" />
                     <UI.Button onPress={() => this._onPressLottery()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
-                    } elevation={4} variant={"outlined"} label="Lottery" />
+                    } elevation={4} variant={"outlined"} label="LOTTERY" />
                     <UI.Button onPress={() => this._onPressRoadMap()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
-                    } elevation={4} variant={"outlined"} label="RoadMap" />
+                    } elevation={4} variant={"outlined"} label="ROADMAP" />
                     <UI.Button onPress={() => this._onPressCIC()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="$CIC" />
-                    <UI.Button onPress={() => this._onPressFAQ()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01, marginRight: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressFAQ()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01, marginRight: this.props.width * 0.03 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="FAQ" />
 
                     <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 27, height: 27, marginRight: 20, }}>

@@ -30,10 +30,12 @@ export interface ImageSourceBase {
     caru2: string;
     caru3: string;
     metamask: string;
+    copita: string;
     twitter: string;
     stripe: string;
     check: string;
     eth: string;
     cic: string;
     project: string;
+    puzzle: string;
 }

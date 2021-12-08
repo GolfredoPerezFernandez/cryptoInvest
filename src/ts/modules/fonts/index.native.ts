@@ -10,10 +10,10 @@ import { FontBase } from './Fonts';
 class Fonts implements FontBase {
     monospace = 'System';
 
-    displayLight = 'System';
-    displayRegular = 'System';
-    displaySemibold = 'System';
-    displayBold = 'System';
+    displayLight = 'Gilroy Light';
+    displayRegular = 'Gilroy Regular';
+    displaySemibold = 'Gilroy Semibold';
+    displayBold = 'Gilroy Bold';
 }
 
 export default new Fonts();

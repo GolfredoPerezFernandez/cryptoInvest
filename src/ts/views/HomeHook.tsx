@@ -122,7 +122,7 @@ const _styles = {
     opacity: 1,
   }),
   logoText4: RX.Styles.createTextStyle({
-    font: Fonts.displayRegular,
+    font: Fonts.displayBold,
     fontSize: 16,
     marginHorizontal: 4,
     color: Colors.white,
@@ -134,7 +134,7 @@ const _styles = {
     color: Colors.white,
   }),
   logoText3Tiny: RX.Styles.createTextStyle({
-    font: Fonts.displayRegular,
+    font: Fonts.displayBold,
     fontSize: 14,
     color: Colors.white,
   }),
@@ -176,47 +176,48 @@ export const HomeHook = ({
   navContext: any;
   height: number;
 }) => {
-  return <RX.ScrollView style={{ flex: 1, backgroundColor: 'black', alignSelf: 'stretch' }} >
+  return <RX.ScrollView style={{ flex: 1, backgroundColor: '#1D1F21', alignSelf: 'stretch' }} >
     <RX.View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
 
 
-      {
-        isTiny ?
-          <RX.View style={{ flex: 1, marginTop: 60, flexDirection: 'column', width, height: height * 1.4, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-            <RX.View style={{ paddingBottom: 40, width: width, height: (height * 1.4), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
+      {isTiny ?
+        <RX.View style={{ flex: 1, marginTop: 60, flexDirection: 'column', width, height: height * 1.4, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
+          <RX.View style={{ paddingBottom: 40, width: width, height: (height * 1.4), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
 
-              <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
-                <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
-
-
-                <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 300, marginLeft: 0, marginBottom: 0, height: 90, }} />
+            <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
+              <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
 
 
+              <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 300, marginLeft: 0, marginBottom: 0, height: 90, }} />
 
-                <RX.Text style={[_styles.logoText4, { width: width * 0.7, marginTop: 15, marginBottom: 40 }]}>
-                  {'Our team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innovative projects along with high quality supporting services. Right now our team consist of 2 guys: Patrick from Netherlands and Golfredo from Colombia. We will be expanding our team as soon as possible with club members that can bring the needed expertise.'}
-                </RX.Text>
 
-                <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 10, width: 200, marginBottom: 5, }]}>
-                  {'Follow Us'}
-                </RX.Text>
-                <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
 
-                  <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
+              <RX.Text style={[_styles.logoText4, { width: width * 0.7, marginTop: 15, marginBottom: 40 }]}>
+                {'Our team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innovative projects along with high quality supporting services. Right now our team consist of 2 guys: Patrick from Netherlands and Golfredo from Colombia. We will be expanding our team as soon as possible with club members that can bring the needed expertise.'}
+              </RX.Text>
 
-                </RX.Button>
-                <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoinvestNF1")}>
-                  <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 10, width: 200, marginBottom: 5, }]}>
+                {'Follow Us'}
+              </RX.Text>
+              <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
 
-                </RX.Button>
-              </RX.View >
+                <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
 
-            </RX.View>
-          </RX.View> :
+              </RX.Button>
+              <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoinvestNF1")}>
+                <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
+
+              </RX.Button>
+            </RX.View >
+
+          </RX.View>
+        </RX.View> :
+        <RX.Image source={ImageSource.copita} resizeMode={'contain'} style={{ flex: 1, width, height }}>
           <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-            <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
+            <RX.View style={{ flex: 70, justifyContent: "center", alignItems: "center" }}>
               <Carousel
                 autoplay={true}
+                swipeThreshold={160}
                 lockScrollWhileSnapping={true}
                 data={[
                   {
@@ -266,7 +267,7 @@ export const HomeHook = ({
                 renderItem={({ item, index }: { item: Entries, index: number }) => {
                   return (
                     <RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 340, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
-                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.3, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
                         <RX.Text style={[_styles.logoText6, { textAlign: 'left', width: 400, marginBottom: 10, }]}>
                           {item.title}
@@ -292,7 +293,7 @@ export const HomeHook = ({
                 showsHorizontalScrollIndicator={false}
               />
             </RX.View >
-            <RX.View style={{ flex: 50, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
+            <RX.View style={{ flex: 30, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
 
 
               <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 500, marginLeft: 0, height: 500, marginRight: 100, }} />
@@ -300,11 +301,12 @@ export const HomeHook = ({
             </RX.View >
 
           </RX.View>
+        </RX.Image>
       }
 
       <RX.View style={{ width: width, height: height * 0.5, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
         <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
-          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 200, marginBottom: 10, }]}>
+          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 300, marginBottom: 10, }]}>
             {'Daily $CIC Airdrop'}
           </RX.Text>
           <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
@@ -328,14 +330,14 @@ export const HomeHook = ({
           <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
             {'-DAO'}
           </RX.Text>
-          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, marginTop: 5, textAlign: "center" }]}>
             {'-VAULT'}
           </RX.Text>
-          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, marginTop: 5, textAlign: "center" }]}>
             {'-Launchpad'}
           </RX.Text>
 
-          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, marginTop: 5, textAlign: "center" }]}>
             {'-Software'}
           </RX.Text>
         </RX.Image >
