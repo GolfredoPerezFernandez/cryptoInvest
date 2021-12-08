@@ -322,6 +322,19 @@ export const LotteryHook = ({
     </RX.View>
 
 
+    <RX.View style={{ justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}>
+      <RX.Text style={[_styles.logoText6, { minWidth: 280, textAlign: 'left', marginTop: 40, width: 600, marginBottom: 5, }]}>
+        {'We are having a BIG lottery to kickstart the project with very big change of winning!'}
+      </RX.Text>
+
+      <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20 }]}>
+        {"Per level (Bronze, Silver and Gold) we will randomly give away an ETH prize t one of the NFT's holders in that level per 10 sales. For example: When 10 Silver NFt's are sold, 0.10eth will be deposited to 1 random owner."}
+      </RX.Text>
+
+      <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20 }]}>
+        {"After all Nft's are sold on a certain levle the system will select random holders of that NFT level to win the jackpot. For example, after all Silver NFT's are sold, there will be 10 winners to receibe 2eth per holder!"}
+      </RX.Text>
+    </RX.View>
     <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, alignSelf: 'stretch' }}>
       <RX.View style={{ marginTop: isTiny ? 0 : 70, backgroundColor: 'black', flexDirection: 'row', height: 500, width: isTiny ? width * 0.9 : 600, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -332,7 +345,6 @@ export const LotteryHook = ({
 
       </RX.View>
     </RX.View>
-
     <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
       <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />

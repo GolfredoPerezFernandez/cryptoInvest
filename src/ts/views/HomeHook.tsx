@@ -214,7 +214,7 @@ export const HomeHook = ({
         </RX.View> :
         <RX.Image source={ImageSource.copita} resizeMode={'contain'} style={{ flex: 1, width, height }}>
           <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-            <RX.View style={{ flex: 70, justifyContent: "center", alignItems: "center" }}>
+            <RX.View style={{ flex: 60, justifyContent: "center", alignItems: "center" }}>
               <Carousel
                 autoplay={true}
                 swipeThreshold={160}
@@ -293,10 +293,10 @@ export const HomeHook = ({
                 showsHorizontalScrollIndicator={false}
               />
             </RX.View >
-            <RX.View style={{ flex: 30, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
+            <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
 
 
-              <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 500, marginLeft: 0, height: 500, marginRight: 100, }} />
+              <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 400, marginLeft: 0, height: 400, marginRight: 50, }} />
 
             </RX.View >
 

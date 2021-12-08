@@ -282,107 +282,140 @@ export const ProjectHook = ({
     </RX.View > :
 
       <RX.View style={{ flex: 1, flexDirection: 'row', alignSelf: 'stretch' }}>
-        <RX.View style={{ marginTop: 0, paddingTop: 30, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 1.4, flex: 1, alignSelf: 'stretch' }} >
+        <RX.View style={{ marginTop: 0, justifyContent: 'center', alignItems: 'center', paddingTop: 30, minWidth: 1340, flexDirection: 'column', width: width * 0.7, height: height * 2.2, flex: 1, alignSelf: 'stretch' }} >
           <RX.View style={{ width: width, height: 100, marginTop: 40, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-            <RX.Image source={ImageSource.project} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 400, height: 100, }} />
+            <RX.Image source={ImageSource.project} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginTop: 40, marginBottom: 20, height: 50, }} />
 
           </RX.View >
+          <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.7, }} >
+            <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 20, marginBottom: 10, width: 150, height: 150, }} />
+            <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+
+              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 160, marginBottom: 5, }]}>
+                {'Software'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+                {'One of the key parts of our project will be to develop "nft" software for all our holders. Your membership card (nft) will be used as your license to be able to use the software.'}
+              </RX.Text>
+              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+                {'THIS SOFTWARE IS SO POWERFULL IT WILL MAKE YOU A LOT OF $$.'}
+              </RX.Text>
+
+              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+                {"There will be functions like (but not limited to): Finding/Sniping nft's that are X percent under the floor price. Mass bidding on nft's with 1 single wallet signature, build in rarety tool, and a function that can show the properties as soon as they are released by the nft contract.(No need to wait for OS to reveal)."}
+              </RX.Text>
+
+              <RX.Text style={[_styles.logoText3, { width: 500 }]}>
+                {"Using the DAO there will be voting to make the software (limited) available to the public and generate income for the project/vault."}
+              </RX.Text>
+            </RX.View>
+
+          </RX.Image >
           <RX.View style={{ flex: 1, width: width, height: height * 0.15, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
 
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item1} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'Dao'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'Vote on:'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {' -The future of this Project '}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- Artists for upcoming project(s)'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- Utilities for next project(s)'}
-              </RX.Text>
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
+                  {'Dao'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'Vote on:'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {' -The future of this Project '}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- Artists for upcoming project(s)'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- Utilities for next project(s)'}
+                </RX.Text>
+              </RX.View>
 
 
             </RX.Image >
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item2} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'LaunchPad'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'Creation of a launchpad website to be the jumping-off point for the best projects launching in the NFT space.'}
-              </RX.Text>
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
 
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
+                  {'LaunchPad'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'Creation of a launchpad website to be the jumping-off point for the best projects launching in the NFT space.'}
+                </RX.Text>
+
+              </RX.View>
             </RX.Image >
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
               <RX.Image source={ImageSource.item3} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
-                {'Whitelists'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'We will orgnize partnerships with other (upcoming) projects and arrange guaranteeed whitelist spot for our holders'}
-              </RX.Text>
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
 
-            </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-              <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 107, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'Airdrops'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- Free airdrop of 1 NFT on all our projects'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- Free reflections (airdrops) of our $CIC token'}
-              </RX.Text>
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 10, }]}>
+                  {'Whitelists'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'We will orgnize partnerships with other (upcoming) projects and arrange guaranteeed whitelist spot for our holders'}
+                </RX.Text>
 
+              </RX.View>
             </RX.Image >
+
           </RX.View >
           <RX.View style={{ flex: 1, width: width, height: height * 0.15, marginBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', alignSelf: 'stretch' }} >
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item5} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'Community'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- VIP membership in our Discord'}
-              </RX.Text>
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
 
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- VIP giveaways'}
-              </RX.Text>
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
+                  {'Community'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- VIP membership in our Discord'}
+                </RX.Text>
 
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'- VIP contests'}
-              </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- VIP giveaways'}
+                </RX.Text>
 
-            </RX.Image >
-            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
-              <RX.Image source={ImageSource.item6} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'Software'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'Development of nft software for our holders. Mass bidding sniping, build-in-rarity.'}
-              </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- VIP contests'}
+                </RX.Text>
+              </RX.View>
 
             </RX.Image >
+
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
               <RX.Image source={ImageSource.item7} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 100, }} />
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
-                {'Vault'}
-              </RX.Text>
-              <RX.Text style={[_styles.logoText3, { width: 220 }]}>
-                {'Vault with blu-chip nft’s for future ideas(fractionalizing)'}
-              </RX.Text>
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
+                  {'Vault'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'Vault with blu-chip nft’s for future ideas(fractionalizing)'}
+                </RX.Text>
+              </RX.View>
+
+            </RX.Image >
+            <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', marginRight: 5, marginLeft: 5, justifyContent: 'center', alignItems: 'center', minWidth: 240, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+              <RX.Image source={ImageSource.item4} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 100, height: 107, }} />
+              <RX.View style={{ height: 200, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+
+                <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 220, marginBottom: 5, }]}>
+                  {'Airdrops'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- Free airdrop of 1 NFT on all our projects'}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { width: 220 }]}>
+                  {'- Free reflections (airdrops) of our $CIC token'}
+                </RX.Text>
+              </RX.View>
 
             </RX.Image >
           </RX.View >
