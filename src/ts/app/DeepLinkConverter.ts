@@ -35,7 +35,7 @@ export default class DeepLinkConverter {
                 url += '/owners?selected=new';
                 return url;
             }else if (topViewContext instanceof NavModels.HomeViewNavContext) {
-                url += '/';
+                url += '/home' ;
                 return url;
             }else if (topViewContext instanceof NavModels.RaffleViewNavContext) {
                 url += '/raffles';
@@ -68,7 +68,7 @@ export default class DeepLinkConverter {
                 } else if (todoListContext.todoList.selectedTodoId2) {
                     url += '?winners=' + encodeURIComponent(todoListContext.todoList.selectedTodoId2);
                 } else if (todoListContext.showHomePanel) {
-                    url = '' ;
+                    url = '/home' ;
                 }else if (todoListContext.showRafflePanel) {
                     url = '/raffles' ;
                 }else if (todoListContext.showProjectPanel) {

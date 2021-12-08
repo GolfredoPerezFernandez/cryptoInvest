@@ -130,12 +130,12 @@ const _styles = {
   }),
   logoText3: RX.Styles.createTextStyle({
     font: Fonts.displayRegular,
-    fontSize: 16,
+    fontSize: 24,
     color: Colors.white,
   }),
   logoText3Tiny: RX.Styles.createTextStyle({
     font: Fonts.displayRegular,
-    fontSize: 12,
+    fontSize: 14,
     color: Colors.white,
   }),
   logoText6: RX.Styles.createTextStyle({
@@ -155,6 +155,16 @@ import ImageSource from 'modules/images';
 
 import * as RX from 'reactxp';
 
+
+interface Entries {
+  img: string;
+  imgText: string;
+  title: string;
+  content: string;
+  url: string;
+}
+
+const { Carousel } = require('reactxp-carousel')
 export const HomeHook = ({
   width,
   isTiny,
@@ -205,42 +215,160 @@ export const HomeHook = ({
           </RX.View> :
           <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
             <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
-              <RX.Image source={ImageSource.background} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: width * 0.3, marginRight: 30, height: width * 0.3, alignSelf: 'flex-end' }} />
+              <Carousel
+                autoplay={true}
+                lockScrollWhileSnapping={true}
+                data={[
+                  {
+                    img: ImageSource.tier1,
+                    imgText: 'Crypto Invest allows NFT holders to get $CIC without staking while always retaining control of their NFT',
+                    title: "FREE AIDROP OF $CIC",
+                    content: 'GET $CIC without staking you NFT',
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808855426046362600'
+                  },
+                  {
+                    img: ImageSource.tier3,
+                    imgText: "Every 10 NFT's sold will randomly select 1 winner from people holding the NFT to receive an ETH prize. After all NFT's are sold from a level the contract will select several JACKPOT winner to receive big ETH prizes.",
+                    title: "LOTTERY",
+                    content: 'Win free ETH by holding you NFT',
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808857625069617652'
+                  },
+                  {
+                    img: ImageSource.tier2,
+                    imgText: 'The DAO will be formed and the first(free) voting will take place to decide the future of the club. For example what will the next step be? Launch of new project? What kind of software do we want?',
+                    title: "DAO",
+                    content: 'A truly decentralized organisation',
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+                  },
+                  {
+                    img: ImageSource.tier2,
+                    imgText: "80% of the Opensea sale proceeds will be deposited into the vault to buy blue-chip nft's for fractionalizing the remaining 20% will be used for development of our sofware and launchpad",
+                    title: "VAULT",
+                    content: "Become part-owner of the best blue chip NFT's",
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+                  },
+                  {
+                    img: ImageSource.tier2,
+                    imgText: "a launchpad website to be a jumping-off point for the best projects launching in the NFT spaces with multi-chain and cross-chain creation capabilities.",
+                    title: "LAUNCHPAD",
+                    content: "jumping-off point for the best projects.",
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+                  },
+                  {
+                    img: ImageSource.tier2,
+                    imgText: "Development of the nft sofware for all our members. Mass-bidding options and sniping options to find nfts's that are X percent under floor price. Build-in rarity tool and more.",
+                    title: "SOFWARE",
+                    content: "Unique NFT software to help you make money.",
+                    url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+                  },
+                ]}
+                enableMomentum={false}
+                renderItem={({ item, index }: { item: Entries, index: number }) => {
+                  return (
+                    <RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 340, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
+                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.3, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
 
+                        <RX.Text style={[_styles.logoText6, { textAlign: 'left', width: 400, marginBottom: 10, }]}>
+                          {item.title}
+                        </RX.Text>
+                        <RX.Text style={[_styles.logoText3, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
+                          {item.content}
+                        </RX.Text>
+                        <RX.Text style={[_styles.logoText4, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
+                          {item.imgText}
+                        </RX.Text>
+                      </RX.Image>
+                    </RX.View >);
+                }}
+                sliderWidth={width}
+                itemWidth={width * 0.8}
+                containerCustomStyle={[_styles.slider,]}
+                contentContainerCustomStyle={[{
+                  height: height * 0.9,
+                }]}
+                scrollEnabled={false}
+                loop={true}
+                vertical={false}
+                showsHorizontalScrollIndicator={false}
+              />
             </RX.View >
-            <RX.View style={{ flex: 50, paddingRight: 50, paddingTop: 50, justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'stretch' }} >
+            <RX.View style={{ flex: 50, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
 
 
-              <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 30, height: 50, }} />
+              <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 500, marginLeft: 0, height: 500, marginRight: 100, }} />
 
-
-
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
-                {'Out team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innnovative projects alogin with hight quality supporting services. Our team consist of 2 guys right now Patrick from Netherlands and Golfredo from Colombia. But will be expand our team as soon as possible with club members that can bring the needed expertise.'}
-              </RX.Text>
-
-              <RX.Text style={[_styles.logoText6, { textAlign: 'left', marginTop: 20, width: 200, marginBottom: 5, }]}>
-                {'Follow Us'}
-              </RX.Text>
-              <RX.View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
-                  <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
-
-                </RX.Button>
-
-                <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
-                  <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, marginLeft: 30, width: 70, height: 70, }} />
-
-                </RX.Button>
-              </RX.View >
             </RX.View >
 
           </RX.View>
       }
 
-      <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-        <RX.Image source={ImageSource.logo} style={{ width: 250, marginTop: 5, height: 70 }} />
+      <RX.View style={{ width: width, height: height * 0.5, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 200, marginBottom: 10, }]}>
+            {'Daily $CIC Airdrop'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {'CryptInvest allost NFT holders to get $CIC without staking, while always retaining control of their NFT! 1$CIC = 1$ CIC'}
+          </RX.Text>
 
+        </RX.Image >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 20, marginLeft: 20, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
+            {'Lottery'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {"Every 10 NFT's sold will randomly select 1 winner from people-holding the NFT to receive an ETH prize."}
+          </RX.Text>
+
+        </RX.Image >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
+            {'Even More...'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {'-DAO'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {'-VAULT'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {'-Launchpad'}
+          </RX.Text>
+
+          <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
+            {'-Software'}
+          </RX.Text>
+        </RX.Image >
+      </RX.View>
+      <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+        <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+          <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
+
+          <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+            {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
+          </RX.Text>
+        </RX.View >
+        <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
+
+          <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
+            <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+              {'Follow Us'}
+            </RX.Text>
+
+          </RX.View >
+          <RX.View style={{ flex: 50, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row' }}>
+            <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+
+              <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, width: 50, height: 50, }} />
+
+            </RX.Button>
+            <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+              <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginLeft: 30, width: 50, height: 50, }} />
+
+            </RX.Button>
+
+          </RX.View >
+        </RX.View >
       </RX.View >
     </RX.View >
 

@@ -332,6 +332,37 @@ export const LotteryHook = ({
 
       </RX.View>
     </RX.View>
+
+    <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+        <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
+
+        <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+          {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
+        </RX.Text>
+      </RX.View >
+      <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
+
+        <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
+          <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+            {'Follow Us'}
+          </RX.Text>
+
+        </RX.View >
+        <RX.View style={{ flex: 50, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row' }}>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+
+            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, width: 50, height: 50, }} />
+
+          </RX.Button>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+            <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginLeft: 30, width: 50, height: 50, }} />
+
+          </RX.Button>
+
+        </RX.View >
+      </RX.View >
+    </RX.View >
   </RX.ScrollView >
 
 

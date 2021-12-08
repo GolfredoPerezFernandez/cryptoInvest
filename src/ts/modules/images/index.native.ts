@@ -43,6 +43,7 @@ class ImageSource implements ImageSourceBase {
     get check() { return require('../../../images/check.png'); }
     get cic() { return require('../../../images/cic.png'); }
     get project() { return require('../../../images/project.png'); }
+    get eth() { return require('../../../images/eth.png'); }
 }
 
 export default new ImageSource();

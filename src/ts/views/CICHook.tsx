@@ -171,7 +171,7 @@ export const CICHook = ({
           <RX.View style={{ paddingBottom: 40, width: width, height: (height * 1.4), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
 
             <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
-              <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
+              <RX.Image source={ImageSource.cic} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
 
 
 
@@ -196,14 +196,11 @@ export const CICHook = ({
           </RX.View>
         </RX.View> :
         <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'column', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-          <RX.View style={{ flex: 50, justifyContent: "center", alignItems: "center" }}>
-            <RX.Image source={ImageSource.background} resizeMode={'cover'} resizeMethod={'auto'} style={{ width: width * 0.3, marginRight: 30, height: width * 0.3, alignSelf: 'flex-end' }} />
 
-          </RX.View >
           <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: width * 0.5, alignSelf: 'stretch' }} >
 
 
-            <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 30, height: 50, }} />
+            <RX.Image source={ImageSource.cic} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 390, marginLeft: 0, marginBottom: 30, height: 50, }} />
             <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 700 }}>
 
 
@@ -211,44 +208,44 @@ export const CICHook = ({
                 {'$CIC is the next generation Hyper Deflationary token in the crypto world. The Tokenomics for this token are very simple, yet very smart. The smart contract of our $CIC (Crypto Invest Coint) will be created and checked by an external company. the contract will be deployed on the Ethereum blockchain. Some of our features will be:'}
               </RX.Text>
 
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, width: width * 0.25, minWidth: 300 }]}>
                 {'1.000.000.000.000 Initial Token Supply.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, width: width * 0.25, minWidth: 300 }]}>
                 {'50% Burn at lauch to become deflationary'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, width: width * 0.25, minWidth: 300 }]}>
                 {'10% Buy fee => 4$ Hyper- deflationary buyback and auto-adding liquidy, 5% in $CIC reflections to token holders, 1% in $CIC reflections to the max. 2500 NFT holders. (Crypto Invest members will "double-dip" because they receive reflections for holding their NFT, and earning reflections on the free tokens they received).'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, width: width * 0.25, minWidth: 300 }]}>
                 {'10% sell fee in $ETH, is deposited to the treasury for cross-chain investments => Daily profits from these invesments will be used for:'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'80% Buyback and auto-adding liquidty (Daily at random times)'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'10% Goes into our NFT project'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'10% Goes into the marketing wallet'}
               </RX.Text>
 
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'75 ETH Starting Capital for initial investments + liquidity.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'25 Eth Marketing wallet at the launch of the token.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, width: width * 0.25, minWidth: 300 }]}>
                 {'Invesments will be made on multiple chain and different strategies will be used this can include:'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'Investing in aggressive yield farms.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'Investing in launchpads/IDO.'}
               </RX.Text>
-              <RX.Text style={[_styles.logoText4, { width: width * 0.25, minWidth: 300 }]}>
+              <RX.Text style={[_styles.logoText4, { marginTop: 10, textAlign: 'left', width: width * 0.25, minWidth: 300 }]}>
                 {'Investing in nodes like strongblock.'}
               </RX.Text>
             </RX.View >
@@ -256,6 +253,36 @@ export const CICHook = ({
 
         </RX.View>
     }
+    <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+        <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
+
+        <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+          {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
+        </RX.Text>
+      </RX.View >
+      <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
+
+        <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
+          <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+            {'Follow Us'}
+          </RX.Text>
+
+        </RX.View >
+        <RX.View style={{ flex: 50, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row' }}>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+
+            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, width: 50, height: 50, }} />
+
+          </RX.Button>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+            <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginLeft: 30, width: 50, height: 50, }} />
+
+          </RX.Button>
+
+        </RX.View >
+      </RX.View >
+    </RX.View >
   </RX.ScrollView >
 
 
