@@ -349,7 +349,7 @@ export const LotteryHook = ({
       <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
 
-        <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+        <RX.Text style={[_styles.logoText4, { width: 400, minWidth: 300 }]}>
           {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
         </RX.Text>
       </RX.View >

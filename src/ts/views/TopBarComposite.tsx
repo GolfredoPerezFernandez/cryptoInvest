@@ -122,7 +122,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
             leftContents = (
                 <RX.Button onPress={this._onPressLogo}>
                     <RX.View style={_styles.logoContainer}>
-                        <RX.Image source={ImageSource.logo} style={{ width: 200, marginTop: 5, height: 50 }} />
+                        <RX.Image source={ImageSource.logo} style={{ width: 150, marginTop: 5, height: 50 }} />
 
                     </RX.View>
                 </RX.Button>
@@ -132,34 +132,20 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
             <RX.View style={_styles.background}>
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
-                    <UI.Button onPress={() => this._onPressHome()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressHome()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 70, borderWidth: 0, marginLeft: this.props.width * 0.005 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="HOME" />
-                    <UI.Button onPress={() => this._onPressProject()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressProject()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 70, borderWidth: 0, marginLeft: this.props.width * 0.005 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="PROJECT" />
-                    <UI.Button onPress={() => this._onPressLottery()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressLottery()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 70, borderWidth: 0, marginLeft: this.props.width * 0.005 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="LOTTERY" />
-                    <UI.Button onPress={() => this._onPressRoadMap()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressRoadMap()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 70, borderWidth: 0, marginLeft: this.props.width * 0.005 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="ROADMAP" />
-                    <UI.Button onPress={() => this._onPressCIC()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressCIC()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 70, borderWidth: 0, marginLeft: this.props.width * 0.005 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="$CIC" />
-                    <UI.Button onPress={() => this._onPressFAQ()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 80, borderWidth: 0, marginLeft: this.props.width * 0.01, marginRight: this.props.width * 0.03 }], label: _styles.label }
+                    <UI.Button onPress={() => this._onPressFAQ()} style={{ root: [{ alignSelf: 'center' }], content: [{ width: 50, borderWidth: 0, marginLeft: this.props.width * 0.005, marginRight: this.props.width * 0.03 }], label: _styles.label }
                     } elevation={4} variant={"outlined"} label="FAQ" />
 
-                    <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 27, height: 27, marginRight: 20, }}>
 
-                        <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
-
-                            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 27, height: 27, }} />
-
-                        </RX.Button>
-                    </RX.View>
-                    <RX.View style={{ justifyContent: 'center', alignItems: 'center', width: 24, height: 24, marginRight: 20, }}>
-
-                        <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoinvestNF1")}>
-                            <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 24, height: 24, }} />
-
-                        </RX.Button>
-                    </RX.View>
 
                     {!this.state.isLogin ? this.props.loading ? <RX.View style={{ width: 160, justifyContent: 'center', alignItems: 'center' }}> <UI.Spinner color={'white'} size={'medium'} /></RX.View> :
                         <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (

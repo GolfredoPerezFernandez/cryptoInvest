@@ -214,10 +214,10 @@ export const HomeHook = ({
         </RX.View> :
         <RX.Image source={ImageSource.copita} resizeMode={'contain'} style={{ flex: 1, width, height }}>
           <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-            <RX.View style={{ flex: 60, justifyContent: "center", alignItems: "center" }}>
+            <RX.View style={{ flex: 70, justifyContent: "center", alignItems: "center" }}>
               <Carousel
                 autoplay={true}
-                swipeThreshold={160}
+                autoplayInterval={8000}
                 lockScrollWhileSnapping={true}
                 data={[
                   {
@@ -266,8 +266,8 @@ export const HomeHook = ({
                 enableMomentum={false}
                 renderItem={({ item, index }: { item: Entries, index: number }) => {
                   return (
-                    <RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 340, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
-                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+                    <RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 500, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
+                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 500, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
                         <RX.Text style={[_styles.logoText6, { textAlign: 'left', width: 400, marginBottom: 10, }]}>
                           {item.title}
@@ -293,10 +293,10 @@ export const HomeHook = ({
                 showsHorizontalScrollIndicator={false}
               />
             </RX.View >
-            <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
+            <RX.View style={{ flex: 30, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch', paddingRight: 50 }} >
 
 
-              <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 400, marginLeft: 0, height: 400, marginRight: 50, }} />
+              <RX.Image source={ImageSource.puzzle} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.2, marginBottom: 50, marginLeft: 0, height: width * 0.2, marginRight: 50, }} />
 
             </RX.View >
 
@@ -305,7 +305,7 @@ export const HomeHook = ({
       }
 
       <RX.View style={{ width: width, height: height * 0.5, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
           <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 300, marginBottom: 10, }]}>
             {'Daily $CIC Airdrop'}
           </RX.Text>
@@ -314,7 +314,7 @@ export const HomeHook = ({
           </RX.Text>
 
         </RX.Image >
-        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 20, marginLeft: 20, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 20, marginLeft: 20, minWidth: 220, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
           <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
             {'Lottery'}
           </RX.Text>
@@ -323,7 +323,7 @@ export const HomeHook = ({
           </RX.Text>
 
         </RX.Image >
-        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 180, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
           <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
             {'Even More...'}
           </RX.Text>
@@ -346,7 +346,7 @@ export const HomeHook = ({
         <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
           <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
 
-          <RX.Text style={[_styles.logoText4, { width: 600, minWidth: 300 }]}>
+          <RX.Text style={[_styles.logoText4, { width: 400, minWidth: 300 }]}>
             {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
           </RX.Text>
         </RX.View >
