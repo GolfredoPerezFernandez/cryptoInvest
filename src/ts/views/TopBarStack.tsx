@@ -87,6 +87,7 @@ import { UserMoralis } from '../models/IdentityModels';
 import AccountMenuButton2Iny from './AccountMenuButton2Iny';
 import NavContextStore from '../stores/NavContextStore';
 import SimpleDialog from '../controls/SimpleDialog';
+import MenuButton from './MenuButton';
 export default class TopBarStack extends ComponentBase<TopBarStackProps, TopBarStackState> {
 
     protected _buildState(props: TopBarStackProps, initState: boolean): Partial<TopBarStackState> | undefined {
@@ -101,16 +102,20 @@ export default class TopBarStack extends ComponentBase<TopBarStackProps, TopBarS
 
     render(): JSX.Element | null {
         let leftContents: JSX.Element | undefined;
+
+        let menu: JSX.Element | undefined;
         if (this.props.showBackButton) {
             leftContents = (
                 <HoverButton onPress={this._onPressBack} onRenderChild={this._renderBackButton} />
             );
         }
-
+        menu = (
+            <MenuButton />
+        );
         return (
             <RX.View style={[_styles.background, Styles.statusBarTopMargin]}>
                 <RX.View style={[_styles.leftLeftContainer, { width: this.props.width * 0.40 }]}>
-                    {leftContents}
+                    {menu}
                     {!this.state.isLogin ? null :
                         <UI.Button onPress={() => this._onPressRaffles()} style={{ root: [{ alignSelf: 'center' }], content: [{ height: 37, width: 88, backgroundColor: "#FFC06F", borderRadius: 11, }], label: _styles.label }
                         } elevation={4} variant={"outlined"} label="Raffles" />}
@@ -123,12 +128,12 @@ export default class TopBarStack extends ComponentBase<TopBarStackProps, TopBarS
                         <UI.Spinner style={{ marginTop: 20, marginRight: 40 }} size={'medium'} color={'white'} />  </RX.View> :
                         <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (
                             <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, marginRight: 10, width: 14, height: 14 }} />
-                        )} style={{ root: [{ alignSelf: 'center', }], content: [{ width: 88, marginRight: 30, height: 37, borderRadius: 11, }], label: _styles.label }
+                        )} style={{ root: [{ alignSelf: 'center', }], content: [{ width: 69, marginRight: 30, height: 37, borderRadius: 11, }], label: _styles.label }
                         } elevation={4} variant={"outlined"} label="Auth" />
                         :
                         <RX.View style={{ height: 80, flexDirection: 'row', paddingRight: 30, justifyContent: 'center', alignItems: 'center' }}>
 
-                            <AccountMenuButton2Iny onLogOut={this.onLogOut} username={this.state.user.ethAddress} avatar={this.state.user.avatar === '' ? '' : this.state.user.avatar.url()} onPress={() => this._onPressModal} />
+                            <AccountMenuButton2Iny width={this.props.width} onLogOut={this.onLogOut} username={this.state.user.ethAddress} avatar={this.state.user.avatar === '' ? '' : this.state.user.avatar.url()} onPress={() => this._onPressModal} />
 
 
                         </RX.View>}

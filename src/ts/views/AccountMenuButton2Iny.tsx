@@ -80,6 +80,7 @@ interface AccountMenuButtonState {
 interface AccountMenuButtonProps {
     username: string;
     onLogOut(): any;
+    width: number;
     avatar: string;
     onPress: (todoId: string) => void;
 }
@@ -106,7 +107,7 @@ export default class AccountMenuButton2Ini extends ComponentBase<AccountMenuButt
 
     render(): JSX.Element | null {
         return (
-            <UI.Button ref={this._onMountButton} onPress={this._onPress} style={{ content: [{ width: 88, height: 37, justifyContent: 'center', alignItems: 'center', borderRadius: 11, }], label: _styles.label }
+            <UI.Button ref={this._onMountButton} onPress={this._onPress} style={{ content: [{ width: 69, height: 37, justifyContent: 'center', alignItems: 'center', borderRadius: 11, }], label: _styles.label }
             } elevation={4} variant={"outlined"} label={this.props.username.length > 8 ? this.props.username.substring(0, 5).toUpperCase() + '..' : this.props.username} />
 
 
@@ -137,6 +138,7 @@ export default class AccountMenuButton2Ini extends ComponentBase<AccountMenuButt
 
                 return (
                     <SimpleMenu
+                        width={this.props.width}
                         menuItems={items}
                         onSelectItem={this._onSelectMenuItem}
                     />

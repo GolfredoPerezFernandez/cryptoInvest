@@ -120,7 +120,7 @@ export default class TodoCompositeView extends ComponentBase<TodoCompositeViewPr
             );
         } else if (this.props.navContext.showCICPanel) {
             return (
-                <CICHook />
+                <CICHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />
             );
         } else if (this.props.navContext.showFAQPanel) {
             return (

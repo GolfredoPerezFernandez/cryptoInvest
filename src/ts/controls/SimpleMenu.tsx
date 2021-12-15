@@ -6,7 +6,7 @@
 * rendered within an RX.Popup.
 */
 
-import * as _  from 'lodash';
+import * as _ from 'lodash';
 import * as RX from 'reactxp';
 import { ComponentBase } from 'resub';
 
@@ -24,7 +24,7 @@ export interface MenuProps extends RX.CommonProps {
     menuItems: MenuItem[];
     menuButtonStyles?: RX.Types.StyleRuleSet<RX.Types.ButtonStyle>;
     menuTextStyles?: RX.Types.StyleRuleSet<RX.Types.TextStyle>;
-
+    width: number;
     onSelectItem: (command: string) => void;
 
     focusFirst?: boolean;
@@ -37,7 +37,7 @@ interface MenuState {
 
 const _styles = {
     menuContainer: RX.Styles.createViewStyle({
-        backgroundColor: Colors.menuBackground,
+        backgroundColor: "black",
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: Colors.menuBorder,
@@ -45,7 +45,7 @@ const _styles = {
     menuItemContainer: RX.Styles.createButtonStyle({
         minHeight: 30,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         flexDirection: 'row',
     }),
     menuItemHover: RX.Styles.createButtonStyle({
@@ -53,9 +53,9 @@ const _styles = {
     }),
     menuItemText: RX.Styles.createTextStyle({
         flex: 1,
-        font: Fonts.displayRegular,
+        font: Fonts.displayBold,
         fontSize: FontSizes.size16,
-        color: Colors.menuText,
+        color: 'white',
         marginLeft: 16,
         marginRight: 32,
         marginVertical: 4,
@@ -135,7 +135,7 @@ export default class SimpleMenu extends ComponentBase<MenuProps, MenuState> {
             const buttonContainerStyles = [_styles.menuItemContainer];
             if (item.text === '-') {
                 return (
-                    <RX.View key={ 'div-' + index } style={ _styles.divider }/>
+                    <RX.View key={'div-' + index} style={_styles.divider} />
                 );
             }
 
@@ -155,8 +155,8 @@ export default class SimpleMenu extends ComponentBase<MenuProps, MenuState> {
             let selectedCheckMark: JSX.Element | undefined;
             if (item.checked) {
                 selectedCheckMark = (
-                    <RX.Text style={ _styles.checkMarkText }>
-                        { '' }
+                    <RX.Text style={_styles.checkMarkText}>
+                        {''}
                     </RX.Text>
                 );
             } else if (item.disabled) {
@@ -165,28 +165,28 @@ export default class SimpleMenu extends ComponentBase<MenuProps, MenuState> {
 
             return (
                 <RX.Button
-                    ref={ (elem: any) => this._mountedRefsMap[_menuItemPrefix + index] = elem }
-                    key={ item.command }
-                    style={ buttonContainerStyles }
-                    onPress={ e => this._onClickItem(e, item) }
-                    onHoverStart={ () => this._onMouseEnter(item) }
-                    onHoverEnd={ () => this._onMouseLeave(item) }
-                    disabled={ item.disabled }
-                    tabIndex={ index === this.state.focusedIndex ? 0 : -1 }
-                    accessibilityTraits={ RX.Types.AccessibilityTrait.MenuItem }
-                    accessibilityLabel={ accessibilityLabel }
+                    ref={(elem: any) => this._mountedRefsMap[_menuItemPrefix + index] = elem}
+                    key={item.command}
+                    style={buttonContainerStyles}
+                    onPress={e => this._onClickItem(e, item)}
+                    onHoverStart={() => this._onMouseEnter(item)}
+                    onHoverEnd={() => this._onMouseLeave(item)}
+                    disabled={item.disabled}
+                    tabIndex={index === this.state.focusedIndex ? 0 : -1}
+                    accessibilityTraits={RX.Types.AccessibilityTrait.MenuItem}
+                    accessibilityLabel={accessibilityLabel}
                 >
-                    <RX.Text style={ textStyles }>
-                        { item.text }
+                    <RX.Text style={textStyles}>
+                        {item.text}
                     </RX.Text>
-                    { selectedCheckMark }
+                    {selectedCheckMark}
                 </RX.Button>
             );
         });
 
         return (
-            <RX.View style={ _styles.menuContainer } onKeyPress={ this._onKeyPress }>
-                { menuItems }
+            <RX.View style={[_styles.menuContainer, { width: this.props.width }]} onKeyPress={this._onKeyPress}>
+                {menuItems}
             </RX.View>
         );
     }

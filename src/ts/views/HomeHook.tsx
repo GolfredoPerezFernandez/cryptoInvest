@@ -180,38 +180,84 @@ export const HomeHook = ({
     <RX.View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
 
 
-      {isTiny ?
-        <RX.View style={{ flex: 1, marginTop: 60, flexDirection: 'column', width, height: height * 1.4, alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
-          <RX.View style={{ paddingBottom: 40, width: width, height: (height * 1.4), flex: 1, flexDirection: isTiny ? 'column' : 'row', alignSelf: 'stretch' }} >
+      {isTiny ? <RX.Image source={ImageSource.copita} resizeMode={'contain'} style={{ flex: 1, width, height: height }}>
+        <Carousel
+          autoplay={true}
+          autoplayInterval={8000}
+          lockScrollWhileSnapping={true}
+          data={[
+            {
+              img: ImageSource.tier1,
+              imgText: 'Crypto Invest allows NFT holders to get $CIC without staking while always retaining control of their NFT',
+              title: "FREE AIDROP OF $CIC",
+              content: 'GET $CIC without staking you NFT',
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808855426046362600'
+            },
+            {
+              img: ImageSource.tier3,
+              imgText: "Every 10 NFT's sold will randomly select 1 winner from people holding the NFT to receive an ETH prize. After all NFT's are sold from a level the contract will select several JACKPOT winner to receive big ETH prizes.",
+              title: "LOTTERY",
+              content: 'Win free ETH by holding you NFT',
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808857625069617652'
+            },
+            {
+              img: ImageSource.tier2,
+              imgText: 'The DAO will be formed and the first(free) voting will take place to decide the future of the club. For example what will the next step be? Launch of new project? What kind of software do we want?',
+              title: "DAO",
+              content: 'A truly decentralized organisation',
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+            },
+            {
+              img: ImageSource.tier2,
+              imgText: "80% of the Opensea sale proceeds will be deposited into the vault to buy blue-chip nft's for fractionalizing the remaining 20% will be used for development of our sofware and launchpad",
+              title: "VAULT",
+              content: "Become part-owner of the best blue chip NFT's",
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+            },
+            {
+              img: ImageSource.tier2,
+              imgText: "a launchpad website to be a jumping-off point for the best projects launching in the NFT spaces with multi-chain and cross-chain creation capabilities.",
+              title: "LAUNCHPAD",
+              content: "jumping-off point for the best projects.",
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+            },
+            {
+              img: ImageSource.tier2,
+              imgText: "Development of the nft sofware for all our members. Mass-bidding options and sniping options to find nfts's that are X percent under floor price. Build-in rarity tool and more.",
+              title: "SOFWARE",
+              content: "Unique NFT software to help you make money.",
+              url: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/16923634234309235305936278977612378847065311654836719990863808856525557990376'
+            },
+          ]}
+          enableMomentum={false}
+          renderItem={({ item, index }: { item: Entries, index: number }) => {
+            return (<RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 240, width: width, borderRadius: 24, height: height * 0.7, alignSelf: isTiny ? 'center' : 'stretch' }} >
+              <RX.Image source={ImageSource.caru2} resizeMode={width > 700 ? "contain" : 'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 240, marginBottom: 40, width: width * 0.8, borderRadius: 24, marginTop: 20, height: height * 0.6, }} >
 
-            <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }} >
-              <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
-
-
-              <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 300, marginLeft: 0, marginBottom: 0, height: 90, }} />
-
-
-
-              <RX.Text style={[_styles.logoText4, { width: width * 0.7, marginTop: 15, marginBottom: 40 }]}>
-                {'Our team consist of highly motivated and skilled specialists who know how to deal with any issue that might come across. This creates a basis for lasting relationships with our members built on trust and mutual understanding. We are devoted to creating unique and innovative projects along with high quality supporting services. Right now our team consist of 2 guys: Patrick from Netherlands and Golfredo from Colombia. We will be expanding our team as soon as possible with club members that can bring the needed expertise.'}
-              </RX.Text>
-
-              <RX.Text style={[_styles.logoText6, { textAlign: 'center', marginTop: 10, width: 200, marginBottom: 5, }]}>
-                {'Follow Us'}
-              </RX.Text>
-              <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
-
-                <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 10, width: 70, height: 70, }} />
-
-              </RX.Button>
-              <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoinvestNF1")}>
-                <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginBottom: 100, width: 70, height: 70, }} />
-
-              </RX.Button>
-            </RX.View >
-
-          </RX.View>
-        </RX.View> :
+                <RX.Text style={[_styles.logoText6, { textAlign: 'left', minWidth: 180, width: width * 0.7, marginBottom: 10, }]}>
+                  {item.title}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText3, { textAlign: 'left', marginBottom: 10, minWidth: 180, width: width * 0.7, }]}>
+                  {item.content}
+                </RX.Text>
+                <RX.Text style={[_styles.logoText4, { textAlign: 'left', marginBottom: 10, minWidth: 180, width: width * 0.7, }]}>
+                  {item.imgText}
+                </RX.Text>
+              </RX.Image>
+            </RX.View >);
+          }}
+          sliderWidth={width}
+          itemWidth={width * 0.8}
+          containerCustomStyle={[_styles.slider,]}
+          contentContainerCustomStyle={[{
+            height: height * 0.7,
+          }]}
+          scrollEnabled={false}
+          loop={true}
+          vertical={false}
+          showsHorizontalScrollIndicator={false}
+        />
+      </RX.Image> :
         <RX.Image source={ImageSource.copita} resizeMode={'contain'} style={{ flex: 1, width, height }}>
           <RX.View style={{ flex: 1, marginTop: 40, flexDirection: 'row', width, height: (height - 80), alignSelf: 'stretch', justifyContent: 'center', alignItems: 'center' }}>
             <RX.View style={{ flex: 70, justifyContent: "center", alignItems: "center" }}>
@@ -265,21 +311,20 @@ export const HomeHook = ({
                 ]}
                 enableMomentum={false}
                 renderItem={({ item, index }: { item: Entries, index: number }) => {
-                  return (
-                    <RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 500, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
-                      <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 500, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
+                  return (<RX.View style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'flex-start', minWidth: 500, width: width * 0.4, borderRadius: 24, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
+                    <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 500, width: width * 0.4, borderRadius: 24, marginTop: 10, height: height * 0.5, }} >
 
-                        <RX.Text style={[_styles.logoText6, { textAlign: 'left', width: 400, marginBottom: 10, }]}>
-                          {item.title}
-                        </RX.Text>
-                        <RX.Text style={[_styles.logoText3, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
-                          {item.content}
-                        </RX.Text>
-                        <RX.Text style={[_styles.logoText4, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
-                          {item.imgText}
-                        </RX.Text>
-                      </RX.Image>
-                    </RX.View >);
+                      <RX.Text style={[_styles.logoText6, { textAlign: 'left', width: 400, marginBottom: 10, }]}>
+                        {item.title}
+                      </RX.Text>
+                      <RX.Text style={[_styles.logoText3, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
+                        {item.content}
+                      </RX.Text>
+                      <RX.Text style={[_styles.logoText4, { textAlign: 'left', marginBottom: 10, width: 400 }]}>
+                        {item.imgText}
+                      </RX.Text>
+                    </RX.Image>
+                  </RX.View >);
                 }}
                 sliderWidth={width}
                 itemWidth={width * 0.8}
@@ -303,8 +348,43 @@ export const HomeHook = ({
           </RX.View>
         </RX.Image>
       }
+      {isTiny ? <RX.View style={{ width: width, height: height * 1.35, justifyContent: 'center', alignItems: 'center', }} >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", maxWidth: 430, alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.9, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: width * 0.8, maxWidth: 400, marginBottom: 10, }]}>
+            {'Daily $CIC Airdrop'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { maxWidth: 400, width: width * 0.6, textAlign: "center" }]}>
+            {'CryptInvest allost NFT holders to get $CIC without staking, while always retaining control of their NFT! 1$CIC = 1$ CIC'}
+          </RX.Text>
 
-      <RX.View style={{ width: width, height: height * 0.5, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+        </RX.Image >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", maxWidth: 430, alignItems: "center", flexDirection: 'column', marginRight: 20, marginLeft: 20, minWidth: 220, width: width * 0.9, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { maxWidth: 400, textAlign: 'center', width: width * 0.8, marginBottom: 10, }]}>
+            {'Lottery'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { maxWidth: 400, width: width * 0.6, textAlign: "center" }]}>
+            {"Every 10 NFT's sold will randomly select 1 winner from people-holding the NFT to receive an ETH prize."}
+          </RX.Text>
+        </RX.Image >
+        <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", maxWidth: 430, alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.9, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
+          <RX.Text style={[_styles.logoText8, { maxWidth: 400, textAlign: 'center', width: width * 0.8, marginBottom: 10, }]}>
+            {'Even More...'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { maxWidth: 400, width: width * 0.6, textAlign: "center" }]}>
+            {'-DAO'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { maxWidth: 400, width: width * 0.6, marginTop: 5, textAlign: "center" }]}>
+            {'-VAULT'}
+          </RX.Text>
+          <RX.Text style={[_styles.logoText3Tiny, { maxWidth: 400, width: width * 0.6, marginTop: 5, textAlign: "center" }]}>
+            {'-Launchpad'}
+          </RX.Text>
+
+          <RX.Text style={[_styles.logoText3Tiny, { width: width * 0.6, marginTop: 5, textAlign: "center" }]}>
+            {'-Software'}
+          </RX.Text>
+        </RX.Image >
+      </RX.View> : <RX.View style={{ width: width, height: height * 0.5, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
         <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
           <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 300, marginBottom: 10, }]}>
             {'Daily $CIC Airdrop'}
@@ -321,7 +401,6 @@ export const HomeHook = ({
           <RX.Text style={[_styles.logoText3Tiny, { width: 200, textAlign: "center" }]}>
             {"Every 10 NFT's sold will randomly select 1 winner from people-holding the NFT to receive an ETH prize."}
           </RX.Text>
-
         </RX.Image >
         <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ justifyContent: "center", alignItems: "center", flexDirection: 'column', marginRight: 2, marginLeft: 2, minWidth: 220, width: width * 0.2, borderRadius: 24, marginTop: 10, height: height * 0.4, }} >
           <RX.Text style={[_styles.logoText8, { textAlign: 'center', width: 170, marginBottom: 10, }]}>
@@ -341,8 +420,35 @@ export const HomeHook = ({
             {'-Software'}
           </RX.Text>
         </RX.Image >
-      </RX.View>
-      <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+      </RX.View>}
+
+      {isTiny ? <RX.View style={{ width: width, height: height * 0.6, justifyContent: 'center', alignItems: 'center' }} >
+        <RX.View style={{ width: width, height: 200, justifyContent: 'center', alignItems: 'center' }}>
+          <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
+
+          <RX.Text style={[_styles.logoText4, { marginTop: 20, width: width * 0.7, minWidth: 200, textAlign: 'center' }]}>
+            {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
+          </RX.Text>
+        </RX.View >
+        <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+
+          <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
+            <RX.Text style={[_styles.logoText4, { width, marginBottom: 20, marginTop: 40, textAlign: 'center', minWidth: 300 }]}>
+              {'Follow Us'}
+            </RX.Text>
+
+          </RX.View >
+          <RX.View style={{ flex: 50, marginBottom: 50, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+            <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+              <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, width: 50, height: 50, }} />
+            </RX.Button>
+            <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+              <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginLeft: 30, width: 50, height: 50, }} />
+            </RX.Button>
+
+          </RX.View>
+        </RX.View >
+      </RX.View > : <RX.View style={{ width: width, height: height * 0.4, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
         <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
           <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
 
@@ -353,7 +459,7 @@ export const HomeHook = ({
         <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
 
           <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
-            <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+            <RX.Text style={[_styles.logoText4, { width: width, marginTop: 40, minWidth: 300 }]}>
               {'Follow Us'}
             </RX.Text>
 
@@ -369,9 +475,13 @@ export const HomeHook = ({
 
             </RX.Button>
 
-          </RX.View >
+          </RX.View>
         </RX.View >
-      </RX.View >
+      </RX.View >}
+
+
+
+
     </RX.View >
 
   </RX.ScrollView >

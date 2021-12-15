@@ -233,7 +233,7 @@ export default class RootView extends ComponentBase<RootViewProps, RootViewState
             case NavModels.NavViewId.ViewRoadMap:
                 return <RoadMapHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
             case NavModels.NavViewId.ViewCIC:
-                return <CICHook />;
+                return <CICHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
             case NavModels.NavViewId.ViewFAQ:
                 return <FAQHook isTiny={this.state.isTiny} width={this.state.width} height={this.state.height} />;
 
