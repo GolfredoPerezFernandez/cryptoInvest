@@ -16,7 +16,7 @@ import { Colors, Fonts, FontSizes, Styles } from '../app/Styles';
 const _styles = {
     background: RX.Styles.createViewStyle({
         alignSelf: 'stretch',
-        height: 57,
+        height: 70,
         borderBottomWidth: 1,
         borderColor: Colors.gray66,
         backgroundColor: "black",
@@ -121,7 +121,7 @@ export default class TopBarStack extends ComponentBase<TopBarStackProps, TopBarS
                         } elevation={4} variant={"outlined"} label="Raffles" />}
                 </RX.View>
 
-                <RX.Image source={ImageSource.logo} resizeMode={'contain'} style={{ marginTop: 0, width: this.props.width * 0.2, minHeight: 50 }} />
+                <RX.Image source={ImageSource.logo} resizeMode={'contain'} style={{ marginTop: 15, width: this.props.width * 0.2, height: 40 }} />
 
                 <RX.View style={[_styles.leftRightContainer, { width: this.props.width * 0.40 }]}>
                     {!this.state.isLogin ? this.props.loading ? <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end', alignSelf: 'stretch' }}>

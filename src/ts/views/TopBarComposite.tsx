@@ -246,7 +246,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
 
 
                 let avatar = user.get('avatar')
-                if (address === '0xfd2b6f391066d8eafa910fe73ea90c197c21d338' || address === '0x069dffd8d5e00952d956aef824d3e3dcdadeea63' || address === '0X069DFFD8D5E00952D956AEF824D3E3DCDADEEA63' || address === '0x5e569bbc0a04f1b01cb76905f40557647536e6b1') {
+                if (address === '0xfd2b6f391066d8eafa910fe73ea90c197c21d338' || address === '0x069dffd8d5e00952d956aef824d3e3dcdadeea63' || address === '0X069DFFD8D5E00952D956AEF824D3E3DCDADEEA63' || address === '0x5e569bbc0a04f1b01cb76905f40557647536e6b1' || address === '0x5e569bbc0a04f1B01cB76905f40557647536e6B1') {
 
                     await CurrentUserStore.setIsAdmin(true)
 

@@ -174,13 +174,13 @@ export const LotteryHook = ({
 }) => {
   return <RX.ScrollView style={{ flex: 1, backgroundColor: 'black', alignSelf: 'stretch' }} >
     {isTiny ? <RX.View style={{ width: width, height: 50, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
-      <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 300, height: 50, }} />
+      <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: width * 0.8, height: 50, }} />
 
     </RX.View > : <RX.View style={{ width: width, height: 100, marginTop: 30, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
       <RX.Image source={ImageSource.screen} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: width < 1300 ? 10 : 20, marginBottom: 0, width: 360, height: 100, }} />
 
     </RX.View >}
-    <RX.View style={{ flex: 1, flexDirection: 'row', justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }}>
+    <RX.View style={{ width, flexDirection: 'row', justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }}>
       {isTiny ?
         <Carousel
           autoplay={true}
@@ -211,7 +211,7 @@ export const LotteryHook = ({
           enableMomentum={false}
           renderItem={({ item, index }: { item: Entries, index: number }) => {
             return (
-              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 340, width: width * 0.8, borderRadius: 24, marginTop: 40, height: height * 0.75, alignSelf: isTiny ? 'center' : 'stretch' }} >
+              <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ marginLeft: 20, marginRight: 20, flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', minWidth: 340, width: width * 0.8, borderRadius: 24, marginTop: 40, height: height * 0.6, alignSelf: isTiny ? 'center' : 'stretch' }} >
                 <RX.Image source={item.img} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 40, marginBottom: 10, width: 150, height: 150, }} />
                 <RX.Text style={[_styles.logoText6, { textAlign: 'center', width: 180, marginTop: 20, marginBottom: 10, }]}>
                   {item.title}
@@ -237,14 +237,13 @@ export const LotteryHook = ({
           itemWidth={width * 0.8}
           containerCustomStyle={[_styles.slider,]}
           contentContainerCustomStyle={[{
-            height: height * 0.9,
+            height: height * 0.85,
           }]}
           scrollEnabled={false}
           loop={true}
           vertical={false}
           showsHorizontalScrollIndicator={false}
-        /> :
-        <RX.View style={{ marginTop: 0, flexDirection: 'column', width: isTiny ? width * 0.5 : width * 0.8, height: isTiny ? height * 2.3 : height * 0.7, flex: 1, justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }} >
+        /> : <RX.View style={{ marginTop: 0, flexDirection: 'column', width: isTiny ? width * 0.5 : width * 0.8, height: isTiny ? height * 2.3 : height * 0.7, flex: 1, justifyContent: "center", alignItems: "center", alignSelf: 'stretch' }} >
 
           <RX.View style={{ flex: 1, paddingBottom: 20, width: width, height: isTiny ? height * 1.2 : height * 0.8, justifyContent: 'center', alignItems: 'center', flexDirection: isTiny ? "column" : 'row', alignSelf: 'stretch' }} >
             <RX.Image source={ImageSource.caru2} resizeMode={'cover'} resizeMethod={'auto'} style={{ flexDirection: 'column', justifyContent: 'center', marginHorizontal: 10, alignItems: 'center', width: width * 0.2, minWidth: 300, borderRadius: 24, marginTop: 40, height: height * 0.6, alignSelf: isTiny ? 'center' : 'stretch' }} >
@@ -321,22 +320,34 @@ export const LotteryHook = ({
         </RX.View>}
     </RX.View>
 
-
-    <RX.View style={{ justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}>
-      <RX.Text style={[_styles.logoText6, { minWidth: 280, textAlign: 'left', marginTop: 40, width: 600, marginBottom: 5, }]}>
+    {isTiny ? <RX.View style={{ justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}>
+      <RX.Text style={[_styles.logoText6, { minWidth: 200, textAlign: 'center', marginTop: 0, width: width * 0.8, marginBottom: 5, }]}>
         {'We are having a BIG lottery to kickstart the project with very big change of winning!'}
       </RX.Text>
 
-      <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20 }]}>
+      <RX.Text style={[_styles.logoText4, { minWidth: 200, textAlign: 'center', width: width * 0.8, marginTop: 30 }]}>
         {"Per level (Bronze, Silver and Gold) we will randomly give away an ETH prize t one of the NFT's holders in that level per 10 sales. For example: When 10 Silver NFt's are sold, 0.10eth will be deposited to 1 random owner."}
       </RX.Text>
 
-      <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20 }]}>
+      <RX.Text style={[_styles.logoText4, { minWidth: 200, textAlign: 'center', marginBottom: 50, width: width * 0.8, marginTop: 20 }]}>
         {"After all Nft's are sold on a certain levle the system will select random holders of that NFT level to win the jackpot. For example, after all Silver NFT's are sold, there will be 10 winners to receibe 2eth per holder!"}
       </RX.Text>
-    </RX.View>
+    </RX.View> :
+      <RX.View style={{ justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}>
+        <RX.Text style={[_styles.logoText6, { minWidth: 280, textAlign: 'left', marginTop: 40, width: 600, marginBottom: 5, }]}>
+          {'We are having a BIG lottery to kickstart the project with very big change of winning!'}
+        </RX.Text>
+
+        <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20 }]}>
+          {"Per level (Bronze, Silver and Gold) we will randomly give away an ETH prize t one of the NFT's holders in that level per 10 sales. For example: When 10 Silver NFt's are sold, 0.10eth will be deposited to 1 random owner."}
+        </RX.Text>
+
+        <RX.Text style={[_styles.logoText4, { minWidth: 280, width: 600, marginTop: 20, marginBottom: 20 }]}>
+          {"After all Nft's are sold on a certain levle the system will select random holders of that NFT level to win the jackpot. For example, after all Silver NFT's are sold, there will be 10 winners to receibe 2eth per holder!"}
+        </RX.Text>
+      </RX.View>}
     <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, alignSelf: 'stretch' }}>
-      <RX.View style={{ marginTop: isTiny ? 0 : 70, backgroundColor: 'black', flexDirection: 'row', height: 500, width: isTiny ? width * 0.9 : 600, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
+      <RX.View style={{ marginTop: isTiny ? 0 : 70, backgroundColor: 'black', flexDirection: 'row', height: 500, width: isTiny ? width * 0.8 : 600, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
 
         <TodoListPanel2
           onSelect={() => null}
@@ -345,7 +356,34 @@ export const LotteryHook = ({
 
       </RX.View>
     </RX.View>
-    <RX.View style={{ width: width, height: height * 0.25, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
+
+    {isTiny ? <RX.View style={{ width: width, height: height * 0.6, marginTop: 30, justifyContent: 'center', alignItems: 'center' }} >
+      <RX.View style={{ width: width, height: 200, justifyContent: 'center', alignItems: 'center' }}>
+        <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
+
+        <RX.Text style={[_styles.logoText4, { marginTop: 20, width: width * 0.7, minWidth: 200, textAlign: 'center' }]}>
+          {'CryptoInvest, is dedicated to providing the most value to our users and is the only 100% community- driven project!'}
+        </RX.Text>
+      </RX.View >
+      <RX.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+
+        <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
+          <RX.Text style={[_styles.logoText4, { width, marginBottom: 20, marginTop: 40, textAlign: 'center', minWidth: 300 }]}>
+            {'Follow Us'}
+          </RX.Text>
+
+        </RX.View >
+        <RX.View style={{ flex: 50, marginBottom: 50, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://discord.gg/zg6fhZH8tw")}>
+            <RX.Image source={ImageSource.todoLogo} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, width: 50, height: 50, }} />
+          </RX.Button>
+          <RX.Button onPress={() => RX.Linking.openUrl("https://twitter.com/CryptoReviewEth")}>
+            <RX.Image source={ImageSource.twitter} resizeMode={'contain'} resizeMethod={'auto'} style={{ marginTop: 10, marginLeft: 30, width: 50, height: 50, }} />
+          </RX.Button>
+
+        </RX.View>
+      </RX.View >
+    </RX.View > : <RX.View style={{ width: width, height: height * 0.4, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', }} >
       <RX.View style={{ flex: 60, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <RX.Image source={ImageSource.eth} style={{ width: 100, marginTop: 5, height: 70 }} />
 
@@ -356,7 +394,7 @@ export const LotteryHook = ({
       <RX.View style={{ flex: 40, justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'column' }}>
 
         <RX.View style={{ justifyContent: 'center', alignItems: 'center', flex: 50, }}>
-          <RX.Text style={[_styles.logoText4, { width: width * 0.40, marginTop: 40, minWidth: 300 }]}>
+          <RX.Text style={[_styles.logoText4, { width: width, marginTop: 40, minWidth: 300 }]}>
             {'Follow Us'}
           </RX.Text>
 
@@ -372,9 +410,9 @@ export const LotteryHook = ({
 
           </RX.Button>
 
-        </RX.View >
+        </RX.View>
       </RX.View >
-    </RX.View >
+    </RX.View >}
   </RX.ScrollView >
 
 

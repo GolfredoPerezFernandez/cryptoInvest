@@ -176,7 +176,7 @@ export const FAQHook = ({
                 <RX.Image source={ImageSource.background} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.7, height: 320, alignSelf: 'center' }} />
 
 
-                <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: 300, marginLeft: 0, marginBottom: 0, height: 90, }} />
+                <RX.Image source={ImageSource.front} resizeMode={'contain'} resizeMethod={'auto'} style={{ width: width * 0.8, marginLeft: 0, marginBottom: 0, height: 90, }} />
 
 
 
